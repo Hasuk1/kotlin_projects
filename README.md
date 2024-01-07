@@ -4,8 +4,8 @@
 
 |**Project**| **Status**| **Stack** | **Description** |
 | ------ | ------ | ------ | ------ |
-| `Day00` [Bootcamp_00]()|In progress| Kotlin | first Kotlin project |
-| `Day01` [Bootcamp_01]()|In progress| - | - |
+| `Day00` [Bootcamp_00](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_00)|In progress| Kotlin | first Kotlin project |
+| `Day01` [Bootcamp_01](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_01)|In progress| - | - |
 | `Day02` [Bootcamp_02]()|In progress| - | - |
 | `Day03` [Bootcamp_03]()|In progress| - | - |
 | `Day04` [Bootcamp_04]()|In progress| - | - |
