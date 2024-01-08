@@ -1,0 +1,6 @@
+# Generated files/folders
+*.idea
+*.out
+*.build
+*.gradle
+*.DS_store
