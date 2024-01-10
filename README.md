@@ -4,7 +4,7 @@
 
 ## **Contents**
 
-1. [Project](#project)
+1. [Projects](#project)
 
 2. [Useful combinations in IntelliJ IDEA](#useful-combinations-in-intellij-idea)
 
@@ -16,7 +16,9 @@
 
     2.3 [3. Other](#3-other)
 
-## **Project**
+3. [How to run kotlin code](#how-to-run-kotlin-code)
+
+## **Projects**
 
 |**Project**| **Status**| **Stack** | **Description** |
 | ------ | ------ | ------ | ------ |
@@ -97,3 +99,19 @@ Keymap:
 |⌘ + ⇧ + A|Alt + `|action search|поиск действий|
 |⌃ + V|Content Cell|quick menu of the version control system|быстрое меню системы контроля версий|
 |⌘ + K|Ctrl + K|commit|сделать коммит|
+
+## **How to run kotlin code**
+
+First you need to compile the code using the kotlin compiler:
+```shell
+kotlinc Main.kt -include-runtime -d Main.jar
+```
+
+You can then run the compiled byte code on the JVM:
+```shell
+java -jar Main.jar
+```
+
+```shell
+kotlinc Main.kt -include-runtime -d Main.jar && java -jar Main.jar && rm  Main.jar
+```
