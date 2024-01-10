@@ -1,4 +1,5 @@
-import kotlin.math.*
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 fun main() {
   val x1 = readCoordinate("Input x1:")
