@@ -16,7 +16,7 @@
 
     2.3 [3. Other](#3-other)
 
-3. [How to run kotlin code]()
+3. [How to run kotlin code](#how-to-run-kotlin-code)
 
 ## **Projects**
 
