@@ -25,6 +25,7 @@ fun readOrder(): Boolean {
   }
 }
 
+
 fun readInputNumber(): Int {
   try {
     println("Enter a number: ")
