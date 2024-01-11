@@ -64,8 +64,6 @@ fun checkForPrimes(numberSet: List<Int>) {
 
 fun isPrime(num: Int): Boolean {
   if (num < 2) return false
-  for (i in 2 until num) {
-    if (num % i == 0) return false
-  }
+  for (i in 2 until num) if (num % i == 0) return false
   return true
 }
