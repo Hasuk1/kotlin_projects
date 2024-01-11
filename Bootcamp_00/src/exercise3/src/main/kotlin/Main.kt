@@ -37,7 +37,7 @@ fun readOutputMode(): Mode {
       "Fahrenheit" -> Mode.FAHRENHEIT
       else -> Mode.CELSIUS
     }
-  }
+  } catch ()
 }
 
 fun readTemperature(): Float {
