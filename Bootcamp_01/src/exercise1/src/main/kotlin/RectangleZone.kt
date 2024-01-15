@@ -1,11 +1,20 @@
-import kotlin.math.max
-import kotlin.math.min
+class RectangleZone(private val points: List<Pair<Int, Int>>) : Zone() {
+  override fun isIncidentInside(incident: Incident?): Boolean {
+    return if (incident != null) {
+      val x = incident.x.toDouble()
+      val y = incident.y.toDouble()
 
-class RectangleZone(phoneNumber: String, private val points: List<Pair<Int, Int>>) : Zone() {
-  override fun isIncidentInside(incident: Incident): Boolean {
-    val (x, y) = Pair(incident.x.toDouble(), incident.y.toDouble())
-    val (x1, y1) = points[0]
-    val (x2, y2) = points[1]
-    return x > min(x1, x2) && x < max(x1, x2) && y > min(y1, y2) && y < max(y1, y2)
+      var inside = false
+      var j = points.size - 1
+      for (i in 0 until points.size) {
+        val xi = points[i].first
+        val yi = points[i].second
+        val xj = points[j].first
+        val yj = points[j].second
+        if (((yi > y)!=(yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside
+        j = i
+      }
+      inside
+    } else false
   }
 }

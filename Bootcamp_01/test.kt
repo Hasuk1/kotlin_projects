@@ -62,8 +62,7 @@ fun inputZone(): Zone? {
 
     val parts = input.split(" ")
     val phoneNumber = parts[0]
-    val coordinates = parts.subList(1, parts.size)
-        .map { it.split(";").let { it[0].toInt() to it[1].toInt() } }
+    val coordinates = parts.subList(1, parts.size).map { it.split(";").let { it[0].toInt() to it[1].toInt() } }
 
     return when (coordinates.size) {
         1 -> {
