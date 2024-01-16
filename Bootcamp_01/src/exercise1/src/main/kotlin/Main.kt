@@ -14,33 +14,24 @@ fun readZone(): Zone? {
     when (parts.size) {
       2 -> parts[0].split(";")
         .let { (x, y) -> CircleZone(Pair(x.toInt(), y.toInt()), parts[1].toInt()) }
+
       3 -> {
-        val coordinate_1 = parts[0].split(";")
-        val x1 = coordinate_1[0].toInt()
-        val y1 = coordinate_1[1].toInt()
-        val coordinate_2 = parts[1].split(";")
-        val x2 = coordinate_2[0].toInt()
-        val y2 = coordinate_2[1].toInt()
-        val coordinate_3 = parts[2].split(";")
-        val x3 = coordinate_3[0].toInt()
-        val y3 = coordinate_3[1].toInt()
-        TriangleZone(listOf(Pair(x1, y1), Pair(x2, y2), Pair(x3, y3)))
+        TriangleZone(
+          listOf(parts[0].split(";").let { (x, y) -> Pair(x.toInt(), y.toInt()) },
+            parts[1].split(";").let { (x, y) -> Pair(x.toInt(), y.toInt()) },
+            parts[2].split(";").let { (x, y) -> Pair(x.toInt(), y.toInt()) })
+        )
       }
+
       4 -> {
-        val coordinate_1 = parts[0].split(";")
-        val x1 = coordinate_1[0].toInt()
-        val y1 = coordinate_1[1].toInt()
-        val coordinate_2 = parts[1].split(";")
-        val x2 = coordinate_2[0].toInt()
-        val y2 = coordinate_2[1].toInt()
-        val coordinate_3 = parts[2].split(";")
-        val x3 = coordinate_3[0].toInt()
-        val y3 = coordinate_3[1].toInt()
-        val coordinate_4 = parts[2].split(";")
-        val x4 = coordinate_4[0].toInt()
-        val y4 = coordinate_4[1].toInt()
-        RectangleZone(listOf(Pair(x1, y1), Pair(x2, y2), Pair(x3, y3), Pair(x4, y4)))
+        RectangleZone(
+          listOf(parts[0].split(";").let { (x, y) -> Pair(x.toInt(), y.toInt()) },
+            parts[1].split(";").let { (x, y) -> Pair(x.toInt(), y.toInt()) },
+            parts[2].split(";").let { (x, y) -> Pair(x.toInt(), y.toInt()) },
+            parts[3].split(";").let { (x, y) -> Pair(x.toInt(), y.toInt()) })
+        )
       }
+
       else -> null
     }
   } catch (e: Exception) {
@@ -48,8 +39,6 @@ fun readZone(): Zone? {
     null
   }
 }
-
-
 
 
 fun printZoneInfo(zone: Zone?) {
@@ -84,9 +73,12 @@ fun readIncident(): Incident? {
     "There is a bug in compiler, help me please!",
     "two number 9's, a number 9 large, a number 6 with extra dip..."
   )
-  fun getIncidentType(description:String):IncidentType?{
-    return when{
-      "CAT" in description.uppercase() &&  "TREE" in description.uppercase() -> IncidentType.CAT_ON_TREE
+
+  fun getIncidentType(description: String): IncidentType? {
+    return when {
+      "CAT" in description.uppercase() && "TREE" in description.uppercase() -> IncidentType.CAT_ON_TREE
+      "FIRE" in description.uppercase() -> IncidentType.FIRE
+      "GAS"  in description.uppercase() && "LEAK"  in description.uppercase() -> IncidentType.GAS_LEAK
       else -> null
     }
   }
@@ -96,17 +88,17 @@ fun readIncident(): Incident? {
   val description = descriptions.random()
   val phone = phones.random()
   val type = getIncidentType(description)
-  return Incident(coordinates[0].toInt(), coordinates[1].toInt(),description ,phone ,type )
+  return Incident(coordinates[0].toInt(), coordinates[1].toInt(), description, phone, type)
 }
 
-fun printIncidentInfo(incident: Incident?, zone: Zone?){
-  if (incident!=null){
+fun printIncidentInfo(incident: Incident?, zone: Zone?) {
+  if (incident!=null) {
     println("\nThe incident info:")
     println("  Description: ${incident.description}")
     println("  Phone number: ${incident.phoneNumber ?: "-"}")
     println("  Type:  ${incident.type?.type ?: "-"}")
   }
-  if (zone!= null && zone.isIncidentInside(incident)){
+  if (zone!=null && zone.isIncidentInside(incident)) {
     println("\nAn incident in the zone")
   } else {
     println("\nAn incident is not in the zone")

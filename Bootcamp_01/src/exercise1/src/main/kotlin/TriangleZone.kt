@@ -1,4 +1,5 @@
 class TriangleZone(private val points: List<Pair<Int, Int>>) : Zone() {
+  private val kPhoneNumber = "84352835724"
   override fun isIncidentInside(incident: Incident?): Boolean {
     return if(incident!=null) {
       val (x, y) = Pair(incident.x.toDouble(), incident.y.toDouble())
@@ -10,5 +11,9 @@ class TriangleZone(private val points: List<Pair<Int, Int>>) : Zone() {
       val t = 1 / (2 * area) * (x1 * y2 - y1 * x2 + (y1 - y2) * x + (x2 - x1) * y)
       s > 0 && t > 0 && 1 - s - t > 0
     } else false
+  }
+
+  override fun getPhoneNumber(): String {
+    return kPhoneNumber
   }
 }
