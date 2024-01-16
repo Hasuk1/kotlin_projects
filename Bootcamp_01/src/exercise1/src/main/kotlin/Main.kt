@@ -76,19 +76,24 @@ fun readIncident(): Incident? {
 
   fun getIncidentType(description: String): IncidentType? {
     return when {
-      "CAT" in description.uppercase() && "TREE" in description.uppercase() -> IncidentType.CAT_ON_TREE
       "FIRE" in description.uppercase() -> IncidentType.FIRE
-      "GAS"  in description.uppercase() && "LEAK"  in description.uppercase() -> IncidentType.GAS_LEAK
+      "GAS" in description.uppercase() && "LEAK" in description.uppercase() -> IncidentType.GAS_LEAK
+      "CAT" in description.uppercase() && "TREE" in description.uppercase() -> IncidentType.CAT_ON_TREE
       else -> null
     }
   }
-  println("\nEnter an incident coordinates:")
-  val input = readLine() ?: return null
-  val coordinates = input.split(";")
-  val description = descriptions.random()
-  val phone = phones.random()
-  val type = getIncidentType(description)
-  return Incident(coordinates[0].toInt(), coordinates[1].toInt(), description, phone, type)
+  return try {
+    println("\nEnter an incident coordinates:")
+    val input = readLine() ?: return null
+    val coordinates = input.split(";")
+    val description = descriptions.random()
+    val phone = phones.random()
+    val type = getIncidentType(description)
+    Incident(coordinates[0].toInt(), coordinates[1].toInt(), description, phone, type)
+  } catch (e: Exception) {
+    println("Invalid input. Please enter valid incident coordinates.")
+    null
+  }
 }
 
 fun printIncidentInfo(incident: Incident?, zone: Zone?) {

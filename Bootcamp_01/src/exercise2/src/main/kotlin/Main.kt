@@ -2,7 +2,7 @@ fun main() {
   val zone = readZone()
   printZoneInfo(zone)
   val incident = readIncident()
-  printIncidentInfo(incident, zone)
+  if (incident!=null) printIncidentInfo(incident, zone)
 }
 
 fun String.phoneMask(): String {
@@ -47,7 +47,6 @@ fun printIncidentInfo(incident: Incident?, zone: Zone?) {
     println("\nAn incident in the zone")
   } else {
     println("\nAn incident is not in the zone")
-    val basicNumber = "88008473824"
-    println("Switch the applicant to the common number: ${basicNumber.phoneMask()}")
+    println("Switch the applicant to the common number: ${"88008473824".phoneMask()}")
   }
 }
