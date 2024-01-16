@@ -2,13 +2,7 @@ fun main() {
   val zone = readZone()
   printZoneInfo(zone)
   val incident = readIncident()
-  printIncidentInfo(incident)
-  if (zone!= null && zone.isIncidentInside(incident)){
-    println("\nAn incident in the zone")
-  } else {
-    println("\nAn incident is not in the zone")
-    println("Switch the applicant to the common number: 88008473824")
-  }
+  printIncidentInfo(incident, zone)
 }
 
 fun readZone(): Zone? {
@@ -21,7 +15,6 @@ fun readZone(): Zone? {
       2 -> parts[0].split(";")
         .let { (x, y) -> CircleZone(Pair(x.toInt(), y.toInt()), parts[1].toInt()) }
       3 -> {
-        //можно переделать через map, но я пока не понимаю
         val coordinate_1 = parts[0].split(";")
         val x1 = coordinate_1[0].toInt()
         val y1 = coordinate_1[1].toInt()
@@ -106,11 +99,17 @@ fun readIncident(): Incident? {
   return Incident(coordinates[0].toInt(), coordinates[1].toInt(),description ,phone ,type )
 }
 
-fun printIncidentInfo(incident: Incident?){
+fun printIncidentInfo(incident: Incident?, zone: Zone?){
   if (incident!=null){
     println("\nThe incident info:")
     println("  Description: ${incident.description}")
     println("  Phone number: ${incident.phoneNumber ?: "-"}")
     println("  Type:  ${incident.type?.type ?: "-"}")
+  }
+  if (zone!= null && zone.isIncidentInside(incident)){
+    println("\nAn incident in the zone")
+  } else {
+    println("\nAn incident is not in the zone")
+    println("Switch the applicant to the common number: 88008473824")
   }
 }
