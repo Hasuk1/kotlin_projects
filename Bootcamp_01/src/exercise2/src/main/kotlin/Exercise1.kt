@@ -64,14 +64,18 @@ fun readIncident(): Incident? {
       else -> null
     }
   }
-
-  println("\nEnter an incident coordinates:")
-  val input = readLine() ?: return null
-  val coordinates = input.split(";")
-  val description = descriptions.random()
-  val phone = phones.random()
-  val type = getIncidentType(description)
-  return Incident(coordinates[0].toInt(), coordinates[1].toInt(), description, phone, type)
+  return try {
+    println("\nEnter an incident coordinates:")
+    val input = readLine() ?: return null
+    val coordinates = input.split(";")
+    val description = descriptions.random()
+    val phone = phones.random()
+    val type = getIncidentType(description)
+    Incident(coordinates[0].toInt(), coordinates[1].toInt(), description, phone, type)
+  } catch (e: Exception) {
+    println("Invalid input. Please enter valid incident coordinates.")
+    null
+  }
 }
 
 data class Incident(
