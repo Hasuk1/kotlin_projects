@@ -3,10 +3,8 @@ sealed class ServerError(val code: Int, val title: String, val description: Stri
     ServerError(unknownCode, "Unknown Error", "Unknown error. Try again later.")
 
   data class InternalError(
-    val internalCode: Int,
-    val internalTitle: String,
-    val internalDescription: String
-  ) : ServerError(internalCode, internalTitle, internalDescription)
+    val iCode: Int, val iTitle: String, val iDescription: String
+  ) : ServerError(iCode, iTitle, iDescription)
 
   companion object {
     fun createError(code: Int): ServerError {
