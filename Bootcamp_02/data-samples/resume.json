@@ -1,0 +1,48 @@
+{
+  "candidate_info": {
+    "name": "Vasiliev Sergei Petrovich",
+    "profession": "QA",
+    "sex": "male",
+    "birth_date": "30.09.1998",
+    "contacts": {
+      "phone": "72938572843",
+      "email": "vspetrovich@pochta.ru"
+    },
+    "relocation": "possible"
+  },
+  "education": [
+    {
+      "type": "higher",
+      "year_start": "2017",
+      "year_end": "2021",
+      "description": "Mathematics in state university"
+    },
+    {
+      "type": "secondary special",
+      "year_start": "2013",
+      "year_end": "2017",
+      "description": "College of informatics"
+    },
+    {
+      "type": "secondary",
+      "year_start": "2005",
+      "year_end": "2013",
+      "description": "Lyceum 156"
+    }
+  ],
+  "job_experience": [
+    {
+      "date_start": "08.2021",
+      "date_end": "04.2022",
+      "company_name": "FinTech",
+      "description": "Some fintech company creating a business platform"
+    },
+    {
+      "date_start": "05.2022",
+      "date_end": "01.2023",
+      "company_name": "SoftProm",
+      "description": "Typical galley"
+    }
+  ],
+  "free_form": "I'm a QA specialist from head to heels. ..."
+}
