@@ -1,26 +1,28 @@
-import kotlin.math.pow
-
 fun main() {
-  println(calculateTotalPoints(readInput()))
+  val n = readLine()!!.toInt()
+  val books = readLine()!!.split(" ").map(String::toInt)
+  val shortenedList = shortenBookList(books,n)
+  println(shortenedList.joinToString(" "))
 }
 
-fun readInput(): List<Pair<Double, Double>> {
-  return List(3) {
-    val (x, y) = readLine()!!.split(" ").map(String::toDouble)
-    x to y
+fun shortenBookList(numbers: List<Int>, n: Int): Set<String> {
+  val sortedNumbers = numbers.sorted().toMutableList()
+  println(sortedNumbers)
+  val result = mutableSetOf<String>()
+  var lastNumbers = Int.MAX_VALUE
+  for (i in 0 until n) {
+    if (sortedNumbers[i] == lastNumbers) {
+      sortedNumbers.removeAt(i)
+      continue
+    }
+    if (i > 0 && i < n - 1 && sortedNumbers[i] == sortedNumbers[i + 1] - 1 && sortedNumbers[i] == sortedNumbers[i - 1] + 1) {
+      result.add("...")
+    } else {
+      result.add("${sortedNumbers[i]}")
+      lastNumbers = sortedNumbers[i]
+    }
   }
+  return result
 }
 
-fun calculatePoints(x: Double, y: Double): Int {
-  val distance = (x * x + y * y).pow(0.5)
-  return when {
-    distance <= 0.1 -> 3
-    distance <= 0.8 -> 2
-    distance <= 1.0 -> 1
-    else -> 0
-  }
-}
 
-fun calculateTotalPoints(input: List<Pair<Double, Double>>): Int {
-  return input.sumOf { (x, y) -> calculatePoints(x, y) }
-}
