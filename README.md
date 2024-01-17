@@ -22,27 +22,27 @@
 
 |**Project**| **Status**| **Stack** | **Description** |
 | ------ | ------ | ------ | ------ |
-| `Day00` [Bootcamp_00](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_00)|In progress| Kotlin | first Kotlin project |
-| `Day01` [Bootcamp_01](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_01)|In progress| - | - |
-| `Day02` [Bootcamp_02]()|In progress| - | - |
-| `Day03` [Bootcamp_03]()|In progress| - | - |
-| `Day04` [Bootcamp_04]()|In progress| - | - |
-| `Day05` [Bootcamp_05]()|In progress| - | - |
-| `Day06` [Bootcamp_06]()|In progress| - | - |
-| `Day07` [Bootcamp_07]()|In progress| - | - |
-| `Day08` [Bootcamp_08]()|In progress| - | - |
-| `Day09` [Bootcamp_09]()|In progress| - | - |
-| `Day10` [Bootcamp_10]()|In progress| - | - |
-| `Day11` [Bootcamp_11]()|In progress| - | - |
-| `Day12` [Bootcamp_12]()|In progress| - | - |
-| `Day13` [Bootcamp_13]()|In progress| - | - |
-| `Day14` [Bootcamp_14]()|In progress| - | - |
-| `Day15` [Bootcamp_15]()|In progress| - | - |
-| `Kotlin01` [Project_01]()|In progress| - | - |
-| `Kotlin02` [Project_02]()|In progress| - | - |
-| `Kotlin03` [Project_03]()|In progress| - | - |
-| `Kotlin04` [Project_04]()|In progress| - | - |
-| `Kotlin05` [Project_05]()|In progress| - | - |
+| `Day00` [Bootcamp_00](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_00)|6/6| Kotlin/Gradle/IntelliJ IDEA | Functional programming |
+| `Day01` [Bootcamp_01](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_01)|3/3| Kotlin/Gradle/IntelliJ IDEA | Object-oriented programming |
+| `Day02` [Bootcamp_02](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_02)|In progress| Kotlin/Gradle/IntelliJ IDEA | Collections |
+| `Day03` [Bootcamp_03]()|Waiting to start| - | - |
+| `Day04` [Bootcamp_04]()|Waiting to start| - | - |
+| `Day05` [Bootcamp_05]()|Waiting to start| - | - |
+| `Day06` [Bootcamp_06]()|Waiting to start| - | - |
+| `Day07` [Bootcamp_07]()|Waiting to start| - | - |
+| `Day08` [Bootcamp_08]()|Waiting to start| - | - |
+| `Day09` [Bootcamp_09]()|Waiting to start| - | - |
+| `Day10` [Bootcamp_10]()|Waiting to start| - | - |
+| `Day11` [Bootcamp_11]()|Waiting to start| - | - |
+| `Day12` [Bootcamp_12]()|Waiting to start| - | - |
+| `Day13` [Bootcamp_13]()|Waiting to start| - | - |
+| `Day14` [Bootcamp_14]()|Waiting to start| - | - |
+| `Day15` [Bootcamp_15]()|Waiting to start| - | - |
+| `Kotlin01` [Project_01]()|Waiting to start| - | - |
+| `Kotlin02` [Project_02]()|Waiting to start| - | - |
+| `Kotlin03` [Project_03]()|Waiting to start| - | - |
+| `Kotlin04` [Project_04]()|Waiting to start| - | - |
+| `Kotlin05` [Project_05]()|Waiting to start| - | - |
 
 ## **Useful combinations in IntelliJ IDEA**
 Keymap:
