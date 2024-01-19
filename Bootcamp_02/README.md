@@ -173,4 +173,4 @@ Contacts: 89785455654
 ...
 ```
 
-💡 [Tap here](https://forms.gle/ZTzuepYrgDpm2yhd8) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
+💡 [Tap here](https://forms.gle/ZTzuepYrgDpm2yhd8) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.
