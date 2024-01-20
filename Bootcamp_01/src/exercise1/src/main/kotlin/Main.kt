@@ -5,12 +5,12 @@ fun main() {
   printIncidentInfo(incident, zone)
 }
 
-fun readZone(): Zone? {
+fun readZone(): Zone {
   println("Enter zone parameters:")
-  val input = readLine() ?: return null
-  val parts = input.split(" ")
 
   return try {
+    val input = readLine() ?: throw IllegalArgumentException("Invalid input.")
+    val parts = input.split(" ")
     when (parts.size) {
       2 -> parts[0].split(";")
         .let { (x, y) -> CircleZone(Pair(x.toInt(), y.toInt()), parts[1].toInt()) }
@@ -32,11 +32,14 @@ fun readZone(): Zone? {
         )
       }
 
-      else -> null
+      else -> {
+        println()
+        throw IllegalArgumentException("Invalid input.")
+      }
     }
   } catch (e: Exception) {
-    println("Invalid input. Please enter valid zone parameters.")
-    null
+    println("Invalid input. Please try again.")
+    readZone()
   }
 }
 
@@ -84,15 +87,15 @@ fun readIncident(): Incident? {
   }
   return try {
     println("\nEnter an incident coordinates:")
-    val input = readLine() ?: return null
+    val input = readLine() ?: throw IllegalArgumentException("Invalid input.")
     val coordinates = input.split(";")
     val description = descriptions.random()
     val phone = phones.random()
     val type = getIncidentType(description)
     Incident(coordinates[0].toInt(), coordinates[1].toInt(), description, phone, type)
   } catch (e: Exception) {
-    println("Invalid input. Please enter valid incident coordinates.")
-    null
+    println("Invalid input. Please try again.")
+    readIncident()
   }
 }
 
