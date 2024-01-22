@@ -12,12 +12,7 @@ sealed class ServerError(val code: Int, val title: String, val description: Stri
         1000 -> InternalError(1000, "The user is not identified", "User is not identified.")
         1001 -> InternalError(1001, "The session is expired", "Session has expired.")
         1002 -> InternalError(1002, "No connection", "There is no internet connection. Try later.")
-        1003 -> InternalError(
-          1003,
-          "The device has failed the verification",
-          "The device did not pass the verification."
-        )
-
+        1003 -> InternalError(1003, "Device not verified", "The device failed the verification.")
         else -> UnknownError(code)
       }
     }
