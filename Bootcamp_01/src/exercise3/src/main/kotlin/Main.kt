@@ -25,9 +25,7 @@ fun printResponse(response: Response) {
   when (response) {
     is Response.Success -> println("\nSuccess:\n  Code: ${response.code}\n  Message: ${response.message}")
     is Response.Error -> println(
-      "\nError:\n  Code: ${response.error.code}\n" +
-              "  Title: ${response.error.title}\n" +
-              "  Description: ${response.error.description}"
+      "\nError:\n  Code: ${response.error.code}\n" + "  Title: ${response.error.title}\n" + "  Description: ${response.error.description}"
     )
   }
 }

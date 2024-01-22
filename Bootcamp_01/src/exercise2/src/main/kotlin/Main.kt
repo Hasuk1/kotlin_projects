@@ -1,8 +1,13 @@
 fun main() {
-  val zone = readZone()
-  printZoneInfo(zone)
-  val incident = readIncident()
-  if (incident!=null) printIncidentInfo(incident, zone)
+  try {
+    val zone = readZone() ?: throw IllegalArgumentException("Invalid zone input.")
+    printZoneInfo(zone)
+    printIncidentInfo(
+      readIncident() ?: throw IllegalArgumentException("Invalid incident input."), zone
+    )
+  } catch (e: Exception) {
+    println("Error: ${e.message}")
+  }
 }
 
 fun String.phoneMask(): String {
@@ -25,7 +30,7 @@ fun String.phoneMask(): String {
 }
 
 fun printZoneInfo(zone: Zone?) {
-  if (zone!=null) {
+  if (zone != null) {
     println("\nThe zone info:")
     when (zone) {
       is CircleZone -> println("  The shape of zone: circle")
@@ -37,13 +42,13 @@ fun printZoneInfo(zone: Zone?) {
 }
 
 fun printIncidentInfo(incident: Incident?, zone: Zone?) {
-  if (incident!=null) {
+  if (incident != null) {
     println("\nThe incident info:")
     println("  Description: ${incident.description}")
     println("  Phone number: ${incident.phoneNumber?.phoneMask() ?: "-"}")
     println("  Type:  ${incident.type?.type ?: "-"}")
   }
-  if (zone!=null && zone.isIncidentInside(incident)) {
+  if (zone != null && zone.isIncidentInside(incident)) {
     println("\nAn incident in the zone")
   } else {
     println("\nAn incident is not in the zone")

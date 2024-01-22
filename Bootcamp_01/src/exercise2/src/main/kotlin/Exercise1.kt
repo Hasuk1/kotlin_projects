@@ -1,4 +1,8 @@
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.atan2
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 fun readZone(): Zone? {
   println("Enter zone parameters:")
@@ -64,16 +68,19 @@ fun readIncident(): Incident? {
       else -> null
     }
   }
+  println("Enter an incident coordinates:")
   return try {
-    println("\nEnter an incident coordinates:")
-    val input = readLine() ?: return null
-    val coordinates = input.split(";")
+    val input = readLine() ?: throw Exception()
+    if (input.split(" ").size != 1) throw Exception()
+    val coordinates = input.split(";").map {
+      it.toIntOrNull() ?: throw Exception()
+    }
+    if (coordinates.size != 2) throw Exception()
     val description = descriptions.random()
     val phone = phones.random()
     val type = getIncidentType(description)
-    Incident(coordinates[0].toInt(), coordinates[1].toInt(), description, phone, type)
+    Incident(coordinates[0], coordinates[1], description, phone, type)
   } catch (e: Exception) {
-    println("Invalid input. Please enter valid incident coordinates.")
     null
   }
 }
@@ -86,7 +93,7 @@ enum class IncidentType(val type: String) {
   FIRE("Fire"), GAS_LEAK("Gas leak"), CAT_ON_TREE("Cat on the tree")
 }
 
-open class Zone() {
+open class Zone {
   private val kPhoneNumber = "88008473824"
   open fun isIncidentInside(incident: Incident?): Boolean {
     return false
@@ -100,12 +107,12 @@ open class Zone() {
 class CircleZone(private val center: Pair<Int, Int>, private val radius: Int) : Zone() {
   private val kPhoneNumber = "89347362826"
   override fun isIncidentInside(incident: Incident?): Boolean {
-    return if (incident!=null) {
+    return if (incident != null) {
       val distance = sqrt(
         (incident.x - center.first).toDouble().pow(2) + (incident.y - center.second).toDouble()
           .pow(2)
       )
-      distance <= radius
+      distance < radius
     } else false
   }
 
@@ -117,7 +124,7 @@ class CircleZone(private val center: Pair<Int, Int>, private val radius: Int) : 
 class TriangleZone(private val points: List<Pair<Int, Int>>) : Zone() {
   private val kPhoneNumber = "84352835724"
   override fun isIncidentInside(incident: Incident?): Boolean {
-    return if (incident!=null) {
+    return if (incident != null) {
       val (x, y) = Pair(incident.x.toDouble(), incident.y.toDouble())
       val (x1, y1) = points[0]
       val (x2, y2) = points[1]
@@ -137,7 +144,7 @@ class TriangleZone(private val points: List<Pair<Int, Int>>) : Zone() {
 class RectangleZone(private val points: List<Pair<Int, Int>>) : Zone() {
   private val kPhoneNumber = "89857889497"
   override fun isIncidentInside(incident: Incident?): Boolean {
-    if (incident==null) return false
+    if (incident == null) return false
     val point = Point(incident.x.toDouble(), incident.y.toDouble())
     var angleSum = 0.0
     for (i in points.indices) {
@@ -148,7 +155,7 @@ class RectangleZone(private val points: List<Pair<Int, Int>>) : Zone() {
       )
       angleSum += angleBetweenPoints(point, vPrev, vi)
     }
-    return abs(angleSum) > 0.000001
+    return abs(angleSum) >= 0.000001
   }
 
   override fun getPhoneNumber(): String {

@@ -1,26 +1,28 @@
 fun main() {
-  val zone = readZone()
-  printZoneInfo(zone)?: throw IllegalArgumentException("Invalid incident input.")
-  val incident = readIncident()
-  printIncidentInfo(incident, zone)
+  try {
+    val zone = readZone() ?: throw IllegalArgumentException("Invalid incident input.")
+    printZoneInfo(zone)
+    val incident = readIncident() ?: throw IllegalArgumentException("Invalid incident input.")
+    printIncidentInfo(incident, zone)
+  } catch (e: Exception) {
+    println("Error: ${e.message}")
+  }
 }
 
 fun readZone(): Zone? {
   println("Enter zone parameters:")
-
   return try {
     val input = readLine() ?: throw Exception()
     val parts = input.split(" ")
     when (parts.size) {
-      2 -> parts[0].split(";")
-        .let { (x, y) ->
-          CircleZone(
-            Pair(
-              x.toIntOrNull() ?: throw Exception(),
-              y.toIntOrNull() ?: throw Exception()
-            ), parts[1].toIntOrNull() ?: throw Exception()
-          )
-        }
+      2 -> parts[0].split(";").let { (x, y) ->
+        CircleZone(
+          Pair(
+            x.toIntOrNull() ?: throw Exception(),
+            y.toIntOrNull() ?: throw Exception()
+          ), parts[1].toIntOrNull() ?: throw Exception()
+        )
+      }
 
       3 -> {
         TriangleZone(
@@ -74,16 +76,16 @@ fun readZone(): Zone? {
         )
       }
 
-      else -> throw throw Exception()
+      else -> throw Exception()
     }
   } catch (e: Exception) {
-    throw IllegalArgumentException("Invalid incident input.")
+    null
   }
 }
 
 
 fun printZoneInfo(zone: Zone?) {
-  if (zone!=null) {
+  if (zone != null) {
     println("\nThe zone info:")
     when (zone) {
       is CircleZone -> println("  The shape of zone: circle")
@@ -126,28 +128,28 @@ fun readIncident(): Incident? {
   println("Enter an incident coordinates:")
   return try {
     val input = readLine() ?: throw Exception()
-    if (input.split(" ").size!=1) throw Exception()
+    if (input.split(" ").size != 1) throw Exception()
     val coordinates = input.split(";").map {
       it.toIntOrNull() ?: throw Exception()
     }
-    if (coordinates.size!=2) throw Exception()
+    if (coordinates.size != 2) throw Exception()
     val description = descriptions.random()
     val phone = phones.random()
     val type = getIncidentType(description)
     Incident(coordinates[0], coordinates[1], description, phone, type)
   } catch (e: Exception) {
-    throw IllegalArgumentException("Invalid incident input.")
+    null
   }
 }
 
 fun printIncidentInfo(incident: Incident?, zone: Zone?) {
-  if (incident!=null) {
+  if (incident != null) {
     println("\nThe incident info:")
     println("  Description: ${incident.description}")
     println("  Phone number: ${incident.phoneNumber ?: "-"}")
     println("  Type:  ${incident.type?.type ?: "-"}")
   }
-  if (zone!=null && zone.isIncidentInside(incident)) {
+  if (zone != null && zone.isIncidentInside(incident)) {
     println("\nAn incident in the zone")
   } else {
     println("\nAn incident is not in the zone")

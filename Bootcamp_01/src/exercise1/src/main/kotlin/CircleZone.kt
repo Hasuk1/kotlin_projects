@@ -9,7 +9,7 @@ class CircleZone(private val center: Pair<Int, Int>, private val radius: Int) :Z
         (incident.x - center.first).toDouble().pow(2) + (incident.y - center.second).toDouble()
           .pow(2)
       )
-      distance <= radius
+      distance < radius
     } else false
   }
 
