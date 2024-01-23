@@ -18,6 +18,8 @@
 
 3. [How to run kotlin code](#how-to-run-kotlin-code)
 
+4. [Install gradle to other dir](#)
+
 ## **Projects**
 
 |**Project**| **Status**| **Stack** | **Description** |
@@ -114,4 +116,10 @@ java -jar Main.jar
 
 ```shell
 kotlinc Main.kt -include-runtime -d Main.jar && java -jar Main.jar && rm  Main.jar
+```
+## **Change gradle home dir**
+
+```zsh
+export GRADLE_USER_HOME=/other/dir
+source ~/.zshrc
 ```
