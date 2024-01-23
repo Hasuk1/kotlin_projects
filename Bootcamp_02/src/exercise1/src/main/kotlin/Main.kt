@@ -96,7 +96,7 @@ fun filterVacancies(filter: Filter, companyData: CompanyData) {
   fun isAppropriateVacancy(vacancy: Vacancy, filter: Filter): Boolean {
     return (vacancy.profession.uppercase() == filter.profession!!.type.uppercase() || filter.profession == Profession.ALL) &&
             (vacancy.level.uppercase() == filter.professionLevel!!.type.uppercase() || filter.professionLevel == ProfessionLevel.ALL) &&
-            (vacancy.salary in filter.salaryLevel!!.range || filter.salaryLevel == SalaryLevel.ALL)
+            (vacancy.salary in filter.salaryLevel!!.range)
   }
 
   fun String.goPascal(): String {
