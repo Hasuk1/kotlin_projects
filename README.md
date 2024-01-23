@@ -123,3 +123,4 @@ kotlinc Main.kt -include-runtime -d Main.jar && java -jar Main.jar && rm  Main.j
 export GRADLE_USER_HOME=/other/dir
 source ~/.zshrc
 ```
+Preferences..->Appearance & Behavior->Path Variables [+]GRADLE_USER_HONE - Value(/other/dir)
