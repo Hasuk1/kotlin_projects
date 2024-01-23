@@ -18,7 +18,7 @@
 
 3. [How to run kotlin code](#how-to-run-kotlin-code)
 
-4. [Install gradle to other dir](#)
+4. [Install gradle to other dir](#change-gradle-home-dir)
 
 ## **Projects**
 
