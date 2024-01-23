@@ -1,0 +1,159 @@
+{
+  "listOfCompanies": [
+    {
+      "name": "OOO SuperPay",
+      "field_of_activity": "banking",
+      "vacancies": [
+        {
+          "profession": "qa",
+          "level": "middle",
+          "salary": 80000
+        },
+        {
+          "profession": "pm",
+          "level": "senior",
+          "salary": 130000
+        }
+      ],
+      "contacts": "79815354235"
+    },
+    {
+      "name": "MTM",
+      "field_of_activity": "banking",
+      "vacancies": [
+        {
+          "profession": "designer",
+          "level": "senior",
+          "salary": 150000
+        }
+      ],
+      "contacts": "+79152354834"
+    },
+    {
+      "name": "CryptoSuperGo",
+      "field_of_activity": "banking",
+      "vacancies": [
+        {
+          "profession": "developer",
+          "level": "junior",
+          "salary": 90000
+        }
+      ],
+      "contacts": "84543215684"
+    },
+    {
+      "name": "PlatiNalogi",
+      "field_of_activity": "public services",
+      "vacancies": [
+        {
+          "profession": "developer",
+          "level": "middle",
+          "salary": 150000
+        },
+        {
+          "profession": "designer",
+          "level": "middle",
+          "salary": 100000
+        },
+        {
+          "profession": "pm",
+          "level": "senior",
+          "salary": 160000
+        }
+      ],
+      "contacts": "88004846512"
+    },
+    {
+      "name": "NeftGazIkra",
+      "field_of_activity": "public services",
+      "vacancies": [
+        {
+          "profession": "analyst",
+          "level": "junior",
+          "salary": 70000
+        }
+      ],
+      "contacts": "79485156458"
+    },
+    {
+      "name": "OOO SoftForHomies",
+      "field_of_activity": "IT",
+      "vacancies": [
+        {
+          "profession": "PM",
+          "level": "middle",
+          "salary": 100000
+        },
+        {
+          "profession": "qa",
+          "level": "junior",
+          "salary": 60000
+        }
+      ],
+      "contacts": "89785455654"
+    },
+    {
+      "name": "MobileGamesPro",
+      "field_of_activity": "IT",
+      "vacancies": [
+        {
+          "profession": "qa",
+          "level": "senior",
+          "salary": 130000
+        }
+      ],
+      "contacts": "+79845255456"
+    },
+    {
+      "name": "FoodsAndGoods",
+      "field_of_activity": "public services",
+      "vacancies": [
+        {
+          "profession": "designer",
+          "level": "middle",
+          "salary": 130000
+        },
+        {
+          "profession": "developer",
+          "level": "junior",
+          "salary": 100000
+        },
+        {
+          "profession": "analyst",
+          "level": "senior",
+          "salary": 150000
+        }
+      ],
+      "contacts": "+79876542125"
+    },
+    {
+      "name": "VseIgry",
+      "field_of_activity": "IT",
+      "vacancies": [
+        {
+          "profession": "developer",
+          "level": "senior",
+          "salary": 200000
+        },
+        {
+          "profession": "designer",
+          "level": "senior",
+          "salary": 180000
+        }
+      ],
+      "contacts": "89615654485"
+    },
+    {
+      "name": "ItBankingMax",
+      "field_of_activity": "banking",
+      "vacancies": [
+        {
+          "profession": "qa",
+          "level": "senior",
+          "salary": 140000
+        }
+      ],
+      "contacts": "77778889811"
+    }
+  ]
+}

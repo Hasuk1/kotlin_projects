@@ -6,7 +6,7 @@ import java.io.File
 fun main() {
   val filter = scanFilter()
   val gson = Gson()
-  val jsonFile = File("${System.getProperty("user.dir")}/../../data-samples/listOfCompanies.json")
+  val jsonFile = File("${System.getProperty("user.dir")}/../files/listOfCompanies.json")
   if (!jsonFile.exists()) {
     println("File .json not find.")
     return
@@ -19,7 +19,7 @@ fun scanFilter(): Filter {
   fun selectActivity(): Activity {
     return try {
       println("Select a field of activity:")
-      for ((index, activity_type) in Activity.values().withIndex()) {
+      Activity.values().withIndex().forEach { (index, activity_type) ->
         println("${index + 1}. ${activity_type.type}")
       }
       val inputActivity = readLine() ?: throw Exception()
@@ -34,7 +34,7 @@ fun scanFilter(): Filter {
   fun selectProfession(activity: Activity): Profession {
     return try {
       println("${activity.type}. Select a profession:")
-      for ((index, profession_type) in Profession.values().withIndex()) {
+      Profession.values().withIndex().forEach { (index, profession_type) ->
         println("${index + 1}. ${profession_type.type}")
       }
       val inputProfession = readLine() ?: throw Exception()
@@ -49,7 +49,7 @@ fun scanFilter(): Filter {
   fun selectProfessionLevel(activity: Activity, profession: Profession): ProfessionLevel {
     return try {
       println("${activity.type}. ${profession.type}. Select the level of a candidate:")
-      for ((index, professionLevelType) in ProfessionLevel.values().withIndex()) {
+      ProfessionLevel.values().withIndex().forEach { (index, professionLevelType) ->
         println("${index + 1}. ${professionLevelType.type}")
       }
       val inputProfessionLevel = readLine() ?: throw Exception()
@@ -68,7 +68,7 @@ fun scanFilter(): Filter {
   ): SalaryLevel {
     return try {
       println("${activity.type}. ${profession.type}. ${professionLevel.type}. Select a salary level:")
-      for ((index, salaryLevelType) in SalaryLevel.values().withIndex()) {
+      SalaryLevel.values().withIndex().forEach { (index, salaryLevelType) ->
         println("${index + 1}. ${salaryLevelType.type}")
       }
       val inputSalaryLevel = readLine() ?: throw Exception("")
