@@ -1,100 +1,1 @@
-import com.google.gson.Gson
-import java.io.File
-
-data class Vacancy(val profession: String, val level: String, val salary: Int)
-
-data class Company(
-  val name: String,
-  val field_of_activity: String,
-  val vacancies: List<Vacancy>,
-  val contacts: String
-)
-
-data class CompanyData(val listOfCompanies: List<Company>)
-
-fun main() {
-  val filter = scanFilter()
-  val gson = Gson()
-  val jsonFile = File("${System.getProperty("user.dir")}/../../data-samples/listOfCompanies.json")
-  if (!jsonFile.exists()) {
-    println("File.json not find.")
-    return
-  }
-
-  val companyData = gson.fromJson(jsonFile.readText(), CompanyData::class.java)
-
-  // Теперь у вас есть коллекция компаний, и вы можете взаимодействовать с ней
-  for (company in companyData.listOfCompanies) {
-    println("Компания: ${company.name}, Сфера деятельности: ${company.field_of_activity}, Контакты: ${company.contacts}")
-    for (vacancy in company.vacancies) {
-      println("  Вакансия: ${vacancy.profession}, Уровень: ${vacancy.level}, Зарплата: ${vacancy.salary}")
-    }
-    println("-------------")
-  }
-
-  // Продолжайте с вашим существующим кодом, добавляя логику взаимодействия с пользователем и фильтрации вакансий
-}
-
-
-enum class Activity(val type: String) {
-  IT("IT"), BANK("Banking"), PUBLIC(" Public services")
-}
-
-enum class Profession(val type: String) {
-  DEV("Developer"), QA("QA"), PM("Project Manager"), ANALYST("Analyst"), DESIGN("Designer")
-}
-
-enum class ProfessionLevel(val type: String) {
-  JUN("Junior"), MID("Middle"), SENIOR("Senior")
-}
-
-enum class SalaryLevel(val type: String) {
-  LOW("< 100000"), MID("100000 - 150000"), HIGH("> 150000")
-}
-
-data class Filter(
-  var activity: Activity? = null,
-  val profession: Profession? = null,
-  val professionLevel: ProfessionLevel? = null,
-  val salaryLevel: SalaryLevel? = null
-)
-
-fun scanFilter(): Filter {
-  val filter = Filter()
-
-  // Ввод сферы деятельности
-  println("Select a field of activity:")
-  for ((index, activity) in Activity.values().withIndex()) {
-    println("${index + 1}. ${activity.type}")
-  }
-  println("${Activity.values().size + 1}. All")
-
-  var inputActivity: String?
-  do {
-    inputActivity = readLine()
-    if (inputActivity == null || inputActivity.toIntOrNull() !in 1..(Activity.values().size + 1)) {
-      println("Это не похоже на правильный ввод.")
-    }
-  } while (inputActivity == null || inputActivity.toIntOrNull() !in 1..(Activity.values().size + 1))
-
-  filter.activity = if (inputActivity.toInt() <= Activity.values().size) {
-    Activity.values()[inputActivity.toInt() - 1]
-  } else {
-    null
-  }
-
-  // Ввод профессии
-  // ...
-
-  // Ввод уровня кандидата
-  // ...
-
-  // Ввод уровня зарплаты
-  // ...
-
-  return filter
-}
-
-//fun getFilteredVacancy(filter: Filter, companyData:CompanyData):CompanyData{
-//
-//}
+import com.google.gson.Gsonimport data.*import enums.*import java.io.Filefun main() {  val filter = scanFilter()  val gson = Gson()  val jsonFile = File("${System.getProperty("user.dir")}/../../data-samples/listOfCompanies.json")  if (!jsonFile.exists()) {    println("File .json not find.")    return  }  val companyData = gson.fromJson(jsonFile.readText(), CompanyData::class.java)  filterVacancies(filter, companyData)}fun scanFilter(): Filter {  fun selectActivity(): Activity {    return try {      println("Select a field of activity:")      for ((index, activity_type) in Activity.values().withIndex()) {        println("${index + 1}. ${activity_type.type}")      }      val inputActivity = readLine() ?: throw Exception()      if (inputActivity.toIntOrNull() !in 1..(Activity.values().size)) throw Exception()      Activity.values()[inputActivity.toInt() - 1]    } catch (e: Exception) {      println("It doesn't look like a correct input. Try again.")      selectActivity()    }  }  fun selectProfession(activity: Activity): Profession {    return try {      println("${activity.type}. Select a profession:")      for ((index, profession_type) in Profession.values().withIndex()) {        println("${index + 1}. ${profession_type.type}")      }      val inputProfession = readLine() ?: throw Exception()      if (inputProfession.toIntOrNull() !in 1..(Profession.values().size)) throw Exception()      Profession.values()[inputProfession.toInt() - 1]    } catch (e: Exception) {      println("It doesn't look like a correct input. Try again.")      selectProfession(activity)    }  }  fun selectProfessionLevel(activity: Activity, profession: Profession): ProfessionLevel {    return try {      println("${activity.type}. ${profession.type}. Select the level of a candidate:")      for ((index, professionLevelType) in ProfessionLevel.values().withIndex()) {        println("${index + 1}. ${professionLevelType.type}")      }      val inputProfessionLevel = readLine() ?: throw Exception()      if (inputProfessionLevel.toIntOrNull() !in 1..(ProfessionLevel.values().size)) throw Exception()      ProfessionLevel.values()[inputProfessionLevel.toInt() - 1]    } catch (e: Exception) {      println("It doesn't look like a correct input. Try again.")      selectProfessionLevel(activity, profession)    }  }  fun selectSalaryLevel(    activity: Activity,    profession: Profession,    professionLevel: ProfessionLevel  ): SalaryLevel {    return try {      println("${activity.type}. ${profession.type}. ${professionLevel.type}. Select a salary level:")      for ((index, salaryLevelType) in SalaryLevel.values().withIndex()) {        println("${index + 1}. ${salaryLevelType.type}")      }      val inputSalaryLevel = readLine() ?: throw Exception("")      if (inputSalaryLevel.toIntOrNull() !in 1..(SalaryLevel.values().size)) throw Exception("")      SalaryLevel.values()[inputSalaryLevel.toInt() - 1]    } catch (e: Exception) {      println("It doesn't look like a correct input. Try again.")      selectSalaryLevel(activity, profession, professionLevel)    }  }  val activity = selectActivity()  val profession = selectProfession(activity)  val professionLevel = selectProfessionLevel(activity, profession)  val salaryLevel = selectSalaryLevel(activity, profession, professionLevel)  println("${activity.type}. ${profession.type}. ${professionLevel.type}. ${salaryLevel.type}")  return Filter(activity, profession, professionLevel, salaryLevel)}fun filterVacancies(filter: Filter, companyData: CompanyData) {  fun isAppropriateActivity(company: Company, filter: Filter): Boolean {    return company.field_of_activity.uppercase() == filter.activity!!.type.uppercase() || filter.activity == Activity.ALL  }  fun isAppropriateVacancy(vacancy: Vacancy, filter: Filter): Boolean {    return (vacancy.profession.uppercase() == filter.profession!!.type.uppercase() || filter.profession == Profession.ALL) &&            (vacancy.level.uppercase() == filter.professionLevel!!.type.uppercase() || filter.professionLevel == ProfessionLevel.ALL) &&            (vacancy.salary in filter.salaryLevel!!.range || filter.salaryLevel == SalaryLevel.ALL)  }  fun String.goPascal(): String {    return this.substring(0, 1).uppercase() + this.substring(1)  }  fun String.professionMask(): String {    return when (this) {      "developer" -> "Developer"      "qa" -> "QA-engineer"      "pm" -> "Project-manager"      "analyst" -> "Analyst"      "designer" -> "Designer"      else -> this    }  }  fun printVacancyInfo(str1: String, str2: String, str3: Int) {    var string = "${str1.goPascal()} $str2"    for (i in 6..31 - string.length) string += " "    println("$string---    $str3")  }  var index = 1  println("The list of suitable vacancies:")  companyData.listOfCompanies    .filter { isAppropriateActivity(it, filter) }    .forEach { company ->      company.vacancies        .filter { isAppropriateVacancy(it, filter) }        .forEach { vacancy ->          println("\n${index++}.")          printVacancyInfo(vacancy.level, vacancy.profession.professionMask(), vacancy.salary)          println("  ${company.name}")          println("  ${company.field_of_activity.goPascal()}")          println("----------------------------------------")        }    }}
