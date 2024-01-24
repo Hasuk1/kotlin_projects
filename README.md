@@ -125,4 +125,4 @@ source ~/.zshrc
 ```
 Preferences..->Appearance & Behavior->Path Variables [+]GRADLE_USER_HONE - Value(/other/dir)
 
-#### /Users/perlabru/goinfre/.gradle
+###### /opt/goinfre/perlabru/.gradle
