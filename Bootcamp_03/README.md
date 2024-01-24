@@ -285,4 +285,4 @@ Rambo attacks with a Grenade (Explosive) - KA-BOOOM!!!!!!
 Ninja attacks with a Shuriken (Cold, Silent) - SPLASH!
 ```
 
-💡 [Tap here](https://forms.gle/dFB3YDYeVmWs6hKm6) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
+💡 [Tap here](https://forms.gle/dFB3YDYeVmWs6hKm6) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.
