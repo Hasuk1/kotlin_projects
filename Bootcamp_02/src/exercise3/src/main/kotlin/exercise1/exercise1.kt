@@ -1,12 +1,12 @@
-import data.Company
-import data.CompanyData
-import data.Filter
-import data.Vacancy
-import enums.Activity
-import enums.Profession
+import exercise1.data.Company
+import exercise1.data.CompanyData
+import exercise1.data.Filter
+import exercise1.data.Vacancy
+import exercise1.enums.Activity
+import exercise1.enums.Profession
 import exercise1.enums.ProfessionLevel
 
-fun filterVacancies(filter: Filter, companyData: CompanyData) {
+fun printFilteredVacancies(filter: Filter, companyData: CompanyData) {
   fun isAppropriateActivity(company: Company, filter: Filter): Boolean {
     return company.field_of_activity.uppercase() == filter.activity!!.type.uppercase() || filter.activity == Activity.ALL
   }

@@ -1,4 +1,4 @@
-package enums
+package exercise1.enums
 
 enum class SalaryLevel(val type: String, val range: IntRange) {
   LOW("< 100000", 0 until 100000),

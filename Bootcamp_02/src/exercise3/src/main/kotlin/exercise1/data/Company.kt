@@ -1,4 +1,4 @@
-package data
+package exercise1.data
 
 data class Company(
   val name: String,

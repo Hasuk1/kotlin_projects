@@ -1,7 +1,9 @@
-package data
+package exercise1.data
 
-import enums.*
+import exercise1.enums.Activity
+import exercise1.enums.Profession
 import exercise1.enums.ProfessionLevel
+import exercise1.enums.SalaryLevel
 
 data class Filter(
   val activity: Activity? = null,

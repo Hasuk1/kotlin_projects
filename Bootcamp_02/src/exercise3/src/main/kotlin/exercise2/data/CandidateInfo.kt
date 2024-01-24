@@ -1,4 +1,4 @@
-package data
+package exercise2.data
 
 import java.time.LocalDate
 
