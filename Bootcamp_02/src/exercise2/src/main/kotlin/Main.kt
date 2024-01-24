@@ -27,7 +27,7 @@ fun main() {
 
   val gson = GsonBuilder()
     .registerTypeAdapter(LocalDate::class.java, LocalDateAdapter())
-    .registerTypeAdapter(YearMonth::class.java, JobExperienceAdapter())
+    .registerTypeAdapter(YearMonth::class.java, JobDateAdapter())
     .create()
   val jsonFile = File("${System.getProperty("user.dir")}/../files/resume.json")
   if (!jsonFile.exists()) {
@@ -43,7 +43,7 @@ class LocalDateAdapter : JsonDeserializer<LocalDate> {
   }
 }
 
-class JobExperienceAdapter : JsonDeserializer<YearMonth> {
+class JobDateAdapter : JsonDeserializer<YearMonth> {
   override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): YearMonth {
     return YearMonth.parse(json?.asString, DateTimeFormatter.ofPattern("MM.yyyy"))
   }

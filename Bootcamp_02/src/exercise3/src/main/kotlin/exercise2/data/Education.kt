@@ -1,4 +1,4 @@
-package data
+package exercise2.data
 
 data class Education(
   val type: String,
