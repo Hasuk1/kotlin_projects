@@ -70,5 +70,4 @@ fun main() {
   println("Objects: $revolverDrum2")
   println("Pointer: ${revolverDrum2.getPointer()}\n")
   println(if (revolverDrum == revolverDrum2) "equals" else "not equals")
-
 }
