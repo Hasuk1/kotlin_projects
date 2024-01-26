@@ -2,18 +2,9 @@ import kotlin.random.Random
 
 class Index(private var index: Int) {
   fun <T> findNextFree(list: MutableList<T>): Index? {
-    if (list[index] == null) return this
-    var i = index
-    var j = index
-    while (i in 0..6 && j in 0..6) {
-      if (i - 1 > 0 && list[--i] == null) {
-        index = i
-        return Index(index)
-      }
-      if (j + 1 < 6 && list[++j] == null) {
-        index = j
-        return Index(index)
-      }
+    for (i in 0..5) {
+      if (list[index] == null) return this
+      nextElement()
     }
     return null
   }

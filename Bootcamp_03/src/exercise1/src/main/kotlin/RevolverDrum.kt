@@ -6,6 +6,10 @@ class RevolverDrum<T>() {
     return "${list[index.toInt()]}"
   }
 
+  fun getIndex(): Int {
+    return index.toInt()
+  }
+
   fun isFull(): Boolean {
     if (list.isEmpty() || list.size < 5) return false
     for (i in 0..5) {
@@ -80,22 +84,22 @@ class RevolverDrum<T>() {
   override fun equals(other: Any?): Boolean {
     if (this === other) return true
     if (other !is RevolverDrum<*>) return false
-    val otherRevolver = other as? RevolverDrum<*> ?: return false
-
-    for (i in 0..5) {
-      val thisElement = list[(index.toInt() + i) % 6]
-      val otherElement = otherRevolver.list[(otherRevolver.index.toInt() + i) % 6]
-      if (thisElement != otherElement) return false
+    val otherList = other.toString()
+    for (i in 1..6) {
+      val list = toString()
+      index.nextElement()
+      if (otherList == list) return true
     }
-
-    return true
+    return false
   }
 
-
   override fun toString(): String {
-    val sublist = list.subList(index.toInt(), 6)
-    sublist.addAll(list.subList(0, index.toInt()))
-    return "$sublist"
+    val output: MutableList<T?> = MutableList(6) { null }
+    for (i in 0..5) {
+      output.add(i, list[index.toInt()])
+      index.nextElement()
+    }
+    return "${output.subList(0, 6)}"
   }
 
   override fun hashCode(): Int {
