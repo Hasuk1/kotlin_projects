@@ -2,7 +2,7 @@ fun main() {
   fun printDrum(revolverDrum:RevolverDrum<Int>, structName: String = "RevolverDrum<Int>"){
     println("Structure: $structName")
     println("Objects: $revolverDrum")
-    println("Pointer: ${revolverDrum.getIndex()} Element: ${revolverDrum.getPointer()}\n")
+    println("Pointer: ${revolverDrum.getPointer()}\n")
   }
   println("1. Adding elements")
   val revolverDrum = RevolverDrum<Int>()
