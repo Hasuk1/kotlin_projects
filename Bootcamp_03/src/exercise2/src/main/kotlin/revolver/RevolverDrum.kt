@@ -1,6 +1,5 @@
 package revolver
 
-import javax.tools.JavaCompiler
 import kotlin.random.Random
 
 class RevolverDrum<T>() {
@@ -30,8 +29,8 @@ class RevolverDrum<T>() {
   private var list: MutableList<T?> = MutableList(size) { null }
   private var index = Index(0)
 
-  fun getPointer(): String {
-    return "${list[index.toInt()]}"
+  fun getPointer(): T? {
+    return list[index.toInt()]
   }
 
   fun getIndex(): Int {
@@ -102,6 +101,10 @@ class RevolverDrum<T>() {
 
   fun scroll() {
     index.randomElement()
+  }
+
+  fun nextCartridge() {
+    index.nextElement()
   }
 
   fun size(): Int {

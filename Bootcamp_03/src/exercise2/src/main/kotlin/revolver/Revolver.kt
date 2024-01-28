@@ -31,7 +31,50 @@ class Revolver<T : Bullet> {
     return true
   }
 
+  fun shoot(): T? {
+    val bullet = drum.getPointer()
+    if (bullet != null && !bullet.isDamp() && bullet.isLoad() && !bullet.isShoot()) {
+      bullet.shoot()
+    } else when {
+      bullet == null -> println("Click.")
+      bullet.isDamp() -> println("Click. $bullet is damp")
+      !bullet.isLoad() -> println("Click. $bullet isn't in the chamber")
+      bullet.isShoot() -> println("Click. $bullet is already shot")
+    }
+    return drum.removeElement()
+  }
+
+  fun quickDraw(): MutableList<T?> {
+    val firedBullets = mutableListOf<T?>()
+    for (i in 0..5) {
+      firedBullets.add(shoot())
+    }
+    return firedBullets
+  }
+
   override fun toString(): String {
     return "$drum"
+  }
+
+  fun size(): Int {
+    return drum.size()
+  }
+
+  fun getCurrentCartridge(): T? {
+    return drum.getPointer()
+  }
+
+  fun scroll() {
+    drum.scroll()
+  }
+
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (other !is Revolver<*>) return false
+    return drum == other.drum
+  }
+
+  override fun hashCode(): Int {
+    return drum.hashCode()
   }
 }
