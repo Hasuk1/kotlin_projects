@@ -153,6 +153,7 @@ Result: equals
 Create two kotlin files for utilities
 
 **Abstract utilities:**
+
 1. Write a function that compares 2 arbitrary objects by type (returns Boolean)
 2. Write an abstract mapper class:
   - declare an abstract method that converts an element of type A to an element of type B
@@ -162,7 +163,8 @@ Create two kotlin files for utilities
 5. Write a delegate that logs all calls of the field to the console
 6. Write addition, subtraction, multiplication and division functions for numbers of arbitrary type. Create an Enum with keys of these actions. Write a function that takes an action key and returns the action
 
-**Utilities for out classes:**
+  **Utilities for out classes:**
+  
 7. Write an extension to our revolver drum, that rearranges its bullets: if there is more than one gap between bullets, they'll be replaced in sequence without gaps
 8. Extend the drum class with a function that scrolls the drum and shoots
 9. Extend the drum with a function that takes the current element. If it is not null - it extracts the bullet and creates a new drum with this bullet (all transformations must be in the same chain)
