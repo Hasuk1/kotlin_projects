@@ -1,3 +1,7 @@
+import bullets.FortyFive
+import bullets.ThreeEighty
+import revolver.Revolver
+
 fun main() {
   println("1.")
   val str1 = "text"
@@ -31,6 +35,45 @@ fun main() {
   println("Subtraction result: ${operation(85, 2.5, MathOperation.SUB)}")
   println("Multiplication result: ${operation(28.4, 4, MathOperation.MUL)}")
   println("Division result: ${operation(256.8, 8, MathOperation.DIV)}")
+  println("7.")
+  println("Before:")
+  val rev = Revolver<ThreeEighty>()
+  println("Structure: Revolver<ThreeEighty>")
+  rev.loadMany(mutableListOf(ThreeEighty(), ThreeEighty(), ThreeEighty(), null, null, ThreeEighty()))
+  println("Objects: $rev")
+  println("Pointer: ${rev.getCurrentCartridge()}\n")
+  println("After:")
+  rev.replaceBullets()
+  println("Structure: Revolver<ThreeEighty>")
+  println("Objects: $rev")
+  println("Pointer: ${rev.getCurrentCartridge()}\n")
+  println("8.")
+  val newRev = Revolver<FortyFive>()
+  newRev.loadMany(mutableListOf(FortyFive(), FortyFive(), FortyFive(), FortyFive(), FortyFive(), FortyFive()))
+  println("Before:")
+  println("Structure: Revolver<FortyFive>")
+  println("Objects: $newRev")
+  println("Pointer: ${newRev.getCurrentCartridge()}\n")
+  println("Scroll & Shoot:")
+  newRev.russianRoulette()
+  println("\nAfter:")
+  println("Structure: Revolver<FortyFive>")
+  println("Objects: $newRev")
+  println("Pointer: ${newRev.getCurrentCartridge()}\n")
+  println("9.")
+  println("Before:")
+  println("Structure: Revolver<FortyFive>")
+  println("Objects: $newRev")
+  println("Pointer: ${newRev.getCurrentCartridge()}\n")
+  println("After:")
+  val newNewRev = newRev.reloadToNewDrum()
+  println("Structure: Revolver<FortyFive>")
+  println("Objects: $newRev")
+  println("Pointer: ${newRev.getCurrentCartridge()}\n")
+  println("New drum:")
+  println("Structure: Revolver<FortyFive>")
+  println("Objects: $newNewRev")
+  println("Pointer: ${newNewRev.getCurrentCartridge()}")
 }
 
 data class First(val name: String)

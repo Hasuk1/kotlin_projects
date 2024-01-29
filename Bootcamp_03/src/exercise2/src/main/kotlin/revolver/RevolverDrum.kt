@@ -84,7 +84,6 @@ class RevolverDrum<T>() {
 
   fun removeElement(): T? {
     if (list.isEmpty()) return null
-    if (list[index.toInt()] == null) return null
     val element = list[index.toInt()]
     list[index.toInt()] = null
     index.nextElement()

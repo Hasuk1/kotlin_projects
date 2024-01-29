@@ -1,3 +1,5 @@
+package revolver
+
 import kotlin.random.Random
 
 class RevolverDrum<T>() {
@@ -22,11 +24,13 @@ class RevolverDrum<T>() {
       return index
     }
   }
-  private var list: MutableList<T?> = MutableList(6) { null }
-  private var index = Index(0)
 
-  fun getPointer(): String {
-    return "${list[index.toInt()]}"
+  private val size = 6
+  var list: MutableList<T?> = MutableList(size) { null }
+  var index = Index(0)
+
+  fun getPointer(): T? {
+    return list[index.toInt()]
   }
 
   fun getIndex(): Int {
@@ -34,8 +38,8 @@ class RevolverDrum<T>() {
   }
 
   fun isFull(): Boolean {
-    if (list.isEmpty() || list.size < 5) return false
-    for (i in 0..5) {
+    if (list.isEmpty() || list.size < size - 1) return false
+    for (i in 0 until size) {
       if (list[i] == null) return false
     }
     return true
@@ -43,7 +47,7 @@ class RevolverDrum<T>() {
 
   fun isEmpty(): Boolean {
     if (list.isEmpty()) return true
-    for (i in 0..5) {
+    for (i in 0 until size) {
       if (list[i] != null) return false
     }
     return true
@@ -62,11 +66,11 @@ class RevolverDrum<T>() {
     while (iterator.hasNext() && !isFull()) {
       val element = iterator.next()
       if (element != null) {
-        index.nextElement()
         addElement(element)
         iterator.remove()
       }
     }
+    index.nextElement()
     return true
   }
 
@@ -98,8 +102,12 @@ class RevolverDrum<T>() {
     index.randomElement()
   }
 
+  fun nextCartridge() {
+    index.nextElement()
+  }
+
   fun size(): Int {
-    val sublist = list.subList(0, 6).filterNotNull()
+    val sublist = list.subList(0, size).filterNotNull()
     return sublist.size
   }
 
@@ -107,7 +115,7 @@ class RevolverDrum<T>() {
     if (this === other) return true
     if (other !is RevolverDrum<*>) return false
     val otherList = other.toString()
-    for (i in 1..6) {
+    for (i in 1 until size) {
       val list = toString()
       index.nextElement()
       if (otherList == list) return true
@@ -116,12 +124,12 @@ class RevolverDrum<T>() {
   }
 
   override fun toString(): String {
-    val output: MutableList<T?> = MutableList(6) { null }
-    for (i in 0..5) {
+    val output: MutableList<T?> = MutableList(size) { null }
+    for (i in 0 until size) {
       output.add(i, list[index.toInt()])
       index.nextElement()
     }
-    return "${output.subList(0, 6)}"
+    return "${output.subList(0, size)}"
   }
 
   override fun hashCode(): Int {
