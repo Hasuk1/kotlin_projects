@@ -1,0 +1,4 @@
+package weapons
+
+interface Silent {
+}
