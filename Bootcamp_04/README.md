@@ -73,4 +73,4 @@ Add in Settings the option "Button highlight", which disables/enables a visible 
 ## Bonus exercise 6: Sound banks
 Add to Settings the ability to change 2-3 sound themes
 
-💡 [Tap here](https://forms.gle/UcQ4X7LkWSPj6jVq8) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
+💡 [Tap here](https://forms.gle/UcQ4X7LkWSPj6jVq8) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.
