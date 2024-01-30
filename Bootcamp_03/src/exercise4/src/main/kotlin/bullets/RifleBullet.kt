@@ -2,14 +2,19 @@ package bullets
 
 class RifleBullet : Bullet() {
   override fun shoot() {
-    TODO("Not yet implemented")
+    shoot = true
+    println("Ba-bang $this")
   }
 
   override fun load() {
-    TODO("Not yet implemented")
+    load = true
   }
 
   override fun extract() {
-    TODO("Not yet implemented")
+    load = false
+  }
+
+  override fun toString(): String {
+    return "RifleBullet ${this.hashCode()}"
   }
 }
