@@ -27,8 +27,8 @@
 | `Day00` [Bootcamp_00](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_00)|6/6| Kotlin/Gradle/IntelliJ IDEA | Functional programming |
 | `Day01` [Bootcamp_01](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_01)|3/3| Kotlin/Gradle/IntelliJ IDEA | Object-oriented programming |
 | `Day02` [Bootcamp_02](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_02)|3/3| Kotlin/Gradle/IntelliJ IDEA | Collections/JSON |
-| `Day03` [Bootcamp_03](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_03)|In progress|  Kotlin/Gradle/IntelliJ IDEA | Generics/Delegates/Functional types |
-| `Day04` [Bootcamp_04]()|Waiting to start| - | - |
+| `Day03` [Bootcamp_03](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_03)|4/5|  Kotlin/Gradle/IntelliJ IDEA | Generics/Delegates/Functional types |
+| `Day04` [Bootcamp_04]()|In progress| Kotlin/Gradle/Android studio/Jetpack compose | First app |
 | `Day05` [Bootcamp_05]()|Waiting to start| - | - |
 | `Day06` [Bootcamp_06]()|Waiting to start| - | - |
 | `Day07` [Bootcamp_07]()|Waiting to start| - | - |
