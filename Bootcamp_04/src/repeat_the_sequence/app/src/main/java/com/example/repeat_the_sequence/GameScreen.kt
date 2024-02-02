@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.repeat_the_sequence.ui.theme.stardewValleyFont
 
 @Preview(showBackground = true)
@@ -44,8 +45,7 @@ fun GameScreen() {
       SoundButton("cow_button", "\uD83D\uDC2E")
     }
     Spacer(modifier = Modifier.weight(1f))
-    MenuButton(description = "button_play", buttonText = "PLAY") {
-    }
+    PlayButton()
   }
 }
 
@@ -93,6 +93,34 @@ fun SoundButton(description: String, emoji: String) {
     Text(
       text = emoji,
       fontSize = 35.sp,
+      modifier = Modifier
+        .align(Alignment.Center)
+    )
+  }
+}
+
+@Composable
+fun PlayButton() {
+  Box(
+    modifier = Modifier
+      .padding(vertical = 20.dp)
+      .width(272.dp)
+      .height(60.dp)
+      .clickable {
+
+      }
+  ) {
+    Image(
+      painter = painterResource(id = R.drawable.button),
+      contentDescription = "ButtonPlay",
+      modifier = Modifier.fillMaxSize()
+    )
+    Text(
+      text = "PLAY",
+      color = Color.White,
+      fontSize = 48.sp,
+      fontFamily = stardewValleyFont,
+      fontWeight = FontWeight.Normal,
       modifier = Modifier
         .align(Alignment.Center)
     )
