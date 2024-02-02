@@ -21,7 +21,6 @@ import com.example.repeat_the_sequence.ui.theme.stardewValleyFont
 
 @Composable
 fun MenuScreen(navController: NavHostController) {
-  BackgroundImage()
   Column(
     Modifier
       .fillMaxSize()
@@ -34,19 +33,6 @@ fun MenuScreen(navController: NavHostController) {
     MenuButton("Settings", "SETTINGS",navController)
     MenuButton("About", "ABOUT",navController)
   }
-}
-
-@Composable
-fun BackgroundImage() {
-  Image(
-    painter = painterResource(id = R.drawable.menu_background),
-    contentDescription = "menu_background",
-    contentScale = ContentScale.Crop,
-    modifier = Modifier
-      .fillMaxSize()
-      .blur(2.dp, 2.dp)
-      .alpha(0.85F)
-  )
 }
 
 @Composable

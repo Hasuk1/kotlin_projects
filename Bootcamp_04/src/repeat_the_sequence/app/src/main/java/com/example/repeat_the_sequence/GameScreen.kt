@@ -1,5 +1,7 @@
 package com.example.repeat_the_sequence
 
+import android.content.Context
+import android.media.MediaPlayer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,19 +15,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.repeat_the_sequence.ui.theme.stardewValleyFont
 
 @Preview(showBackground = true)
 @Composable
 private fun Preview() {
-  GameScreen()
+//  GameScreen()
 
 }
 
 @Composable
-fun GameScreen() {
-  BackgroundImage()
+fun GameScreen(context: Context) {
   Column(
     Modifier
       .fillMaxSize()
@@ -45,7 +47,7 @@ fun GameScreen() {
       SoundButton("cow_button", "\uD83D\uDC2E")
     }
     Spacer(modifier = Modifier.weight(1f))
-    PlayButton()
+    PlayButton(context)
   }
 }
 
@@ -100,14 +102,14 @@ fun SoundButton(description: String, emoji: String) {
 }
 
 @Composable
-fun PlayButton() {
+fun PlayButton(context: Context) {
   Box(
     modifier = Modifier
       .padding(vertical = 20.dp)
       .width(272.dp)
       .height(60.dp)
       .clickable {
-
+        playSound(context)
       }
   ) {
     Image(
@@ -124,5 +126,18 @@ fun PlayButton() {
       modifier = Modifier
         .align(Alignment.Center)
     )
+  }
+}
+
+fun playSound(context: Context) {
+  // Инициализируем MediaPlayer
+  val mediaPlayer = MediaPlayer.create(context, R.raw.sound_1) // Замените на свой файл звука
+
+  // Воспроизводим звук
+  mediaPlayer.start()
+
+  // Освобождаем ресурсы после воспроизведения
+  mediaPlayer.setOnCompletionListener { mp ->
+    mp.release()
   }
 }
