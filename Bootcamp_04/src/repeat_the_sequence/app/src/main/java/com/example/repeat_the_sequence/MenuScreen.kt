@@ -16,10 +16,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.repeat_the_sequence.ui.theme.stardewValleyFont
 
 @Composable
-fun MenuScreen(onClick: (Screen) -> Unit) {
+fun MenuScreen(navController: NavHostController) {
   BackgroundImage()
   Column(
     Modifier
@@ -28,10 +29,10 @@ fun MenuScreen(onClick: (Screen) -> Unit) {
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     GameLogo()
-    MenuButton("button_basic_game", "PLAY") { onClick(Screen.GAME) }
-    MenuButton("button_free_game", "FREE GAME") { onClick(Screen.FREEGAME) }
-    MenuButton("button_settings", "SETTINGS") { onClick(Screen.SETTINGS) }
-    MenuButton("button_about", "ABOUT") { onClick(Screen.ABOUT) }
+    MenuButton("GameScreen", "PLAY",navController)
+    MenuButton("FreeGameScreen", "FREE GAME",navController)
+    MenuButton("Settings", "SETTINGS",navController)
+    MenuButton("About", "ABOUT",navController)
   }
 }
 
@@ -61,14 +62,14 @@ private fun GameLogo() {
 }
 
 @Composable
-fun MenuButton(description: String, buttonText: String, onClick: () -> Unit) {
+fun MenuButton(description: String, buttonText: String, navController: NavHostController) {
   Box(
     modifier = Modifier
       .padding(vertical = 20.dp)
       .width(272.dp)
       .height(60.dp)
       .clickable {
-        onClick()
+        navController.navigate(description)
       }
   ) {
     Image(

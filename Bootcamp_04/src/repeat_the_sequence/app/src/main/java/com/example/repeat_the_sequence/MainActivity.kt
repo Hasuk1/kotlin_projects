@@ -14,16 +14,12 @@ class MainActivity : ComponentActivity() {
       val navController = rememberNavController()
       NavHost(navController = navController, startDestination = Screen.MENU.name) {
         composable(Screen.MENU.name) {
-          MenuScreen {
-            navController.navigate("GameScreen")
-          }
+          MenuScreen(navController)
         }
         composable("GameScreen") {
           GameScreen()
         }
       }
-
     }
   }
 }
-
