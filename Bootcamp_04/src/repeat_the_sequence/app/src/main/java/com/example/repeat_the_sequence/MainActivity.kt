@@ -15,6 +15,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.repeat_the_sequence.enums.Screen
+import com.example.repeat_the_sequence.ui.sreens.Game
+import com.example.repeat_the_sequence.ui.sreens.MenuScreen
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,12 +25,13 @@ class MainActivity : ComponentActivity() {
     setContent {
       BackgroundImage()
       val navController = rememberNavController()
+      val game = Game(this@MainActivity, isFreeGame = false)
       NavHost(navController = navController, startDestination = Screen.MENU.name) {
         composable(Screen.MENU.name) {
           MenuScreen(navController)
         }
         composable("GameScreen") {
-          GameScreen(this@MainActivity)
+          game.RenderScreen()
         }
       }
     }
