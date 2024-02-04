@@ -6,11 +6,13 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.compose.runtime.MutableState
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import com.example.repeat_the_sequence.R
+import com.example.repeat_the_sequence.enums.GameState
+import com.example.repeat_the_sequence.enums.Screen
 
-class SimonGameViewModel : ViewModel() {
+class SimonGameViewModel(private val navController: NavController) : ViewModel() {
   private val sounds = arrayOf(
     Pair("sound_1", R.raw.sound_1),
     Pair("sound_2", R.raw.sound_2),
@@ -31,7 +33,13 @@ class SimonGameViewModel : ViewModel() {
     Log.d("MyLog", "============================")
   }
 
-  fun addPlayerSequence(soundName: String, lvl: MutableState<Int>,context: Context) {
+  fun addPlayerSequence(
+    soundName: String,
+    status: MutableState<GameState>,
+    lvl: MutableState<Int>,
+    record: MutableState<Int>,
+    context: Context
+  ) {
     val soundId = when (soundName) {
       "sound_1" -> Pair(soundName, R.raw.sound_1)
       "sound_2" -> Pair(soundName, R.raw.sound_2)
@@ -40,12 +48,28 @@ class SimonGameViewModel : ViewModel() {
       else -> Pair(soundName, R.raw.sound_1)
     }
     playerSequence.add(soundId)
-    playSound(context,soundId.second)
-    if (playerSequence.size == sequence.size) checkResult(lvl)
+    playSound(context, soundId.second)
+    if (playerSequence.size == sequence.size) checkResult(status, lvl, record, context)
   }
 
-  private fun checkResult(lvl: MutableState<Int>) {
-    if (playerSequence == sequence) lvl.value++
+  private fun checkResult(
+    status: MutableState<GameState>,
+    lvl: MutableState<Int>,
+    record: MutableState<Int>,
+    context: Context
+  ) {
+    if (playerSequence == sequence) {
+      status.value = GameState.WIN
+      lvl.value++
+      if (lvl.value > record.value) {
+        record.value = lvl.value
+        context.getSharedPreferences("record", Context.MODE_PRIVATE).edit()
+          .putInt("record", record.value).apply()
+      }
+    } else {
+      status.value = GameState.LOSE
+      navController.navigate(Screen.LOSE.name) { popUpTo(Screen.GAME.name) { inclusive = true } }
+    }
   }
 
   private fun playSoundDelayed(context: Context, index: Int, delayMillis: Long) {
@@ -62,48 +86,4 @@ class SimonGameViewModel : ViewModel() {
       mp.release()
     }
   }
-
-  private fun playSequence() {
-//    generateSequence()
-//    for (sound in sequence){
-//      playSound(sound)
-//      Thread.sleep(1000)
-//    }
-  }
-
-  private fun resetGame() {
-    // Обработка ошибки или перезапуск игры
-//    level = 1
-//    generateSequence()
-//    playSequence()
-//    playerSequence.clear()
-  }
-
-  private fun onButtonClick(sound: String) {
-//    playSound(sound)
-//    playerSequence.add(sound)
-//
-//    if (!checkSequence()) {
-    // Игрок сделал ошибку, обработайте это соответственно
-//      resetGame()
-//    } else if (playerSequence.size == sequence.size) {
-    // Игрок правильно повторил последовательность, переходите к следующему уровню
-//      level++
-//      generateSequence()
-//      playSequence()
-//      playerSequence.clear()
-//    }
-  }
-
-
-  private fun playSound(sound: String) {
-//    val soundId = soundMap[sound] ?: return
-//    soundPool.play(soundId, 1.0f, 1.0f, 0, 0, 1.0f)
-  }
-
-//  private fun checkSequence(): Boolean {
-//    return sequence == playerSequence
-//  }
-
-
 }
