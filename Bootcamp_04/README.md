@@ -73,4 +73,38 @@ Add in Settings the option "Button highlight", which disables/enables a visible 
 ## Bonus exercise 6: Sound banks
 Add to Settings the ability to change 2-3 sound themes
 
-💡 [Tap here](https://forms.gle/UcQ4X7LkWSPj6jVq8) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.
+-----------
+```kotlin
+@Composable
+fun PlayButton(test: SimonGameViewModel, lvl: MutableState<Int>, onClick: () -> Unit) {
+    val textButton = if (lvl.value == 1) "PLAY" else "NEXT LEVEL"
+
+    // Используем remember для сохранения функции onClick между вызовами Composable
+    val rememberedOnClick by remember { mutableStateOf(onClick) }
+
+    Box(
+        modifier = Modifier
+            .padding(vertical = 20.dp)
+            .width(272.dp)
+            .height(60.dp)
+            .clickable {
+                rememberedOnClick.invoke() // Вызываем переданную функцию по нажатию
+            }
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.button),
+            contentDescription = "ButtonPlay",
+            modifier = Modifier.fillMaxSize()
+        )
+        Text(
+            text = textButton,
+            color = Color.White,
+            fontSize = 48.sp,
+            fontFamily = stardewValleyFont,
+            fontWeight = FontWeight.Normal,
+            modifier = Modifier
+                .align(Alignment.Center)
+        )
+    }
+}
+```
