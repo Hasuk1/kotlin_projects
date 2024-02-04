@@ -28,7 +28,7 @@ fun OptionButton(buttonText: String, onClick: () -> Unit) {
   ) {
     Image(
       painter = painterResource(id = R.drawable.button),
-      contentDescription = buttonText.lowercase().replace(" ","_"),
+      contentDescription = buttonText.lowercase().replace(" ", "_"),
       modifier = Modifier.fillMaxSize()
     )
     Text(

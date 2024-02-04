@@ -56,7 +56,7 @@ fun LoseInfo(lvl: Int, record: Int) {
       Spacer(Modifier.weight(1f))
     }
   }
-  
+
   Box(
     Modifier
       .width(272.dp)
