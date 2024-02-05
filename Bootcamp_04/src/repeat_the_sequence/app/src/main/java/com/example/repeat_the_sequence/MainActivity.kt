@@ -25,11 +25,11 @@ class MainActivity : ComponentActivity() {
         composable(Screen.GAME.name) {
           game.RenderGameScreen(isFreeGame = false)
         }
-        composable(Screen.LOSE.name) {
-          game.RenderLoseScreen()
-        }
         composable(Screen.FREEGAME.name) {
           game.RenderGameScreen(isFreeGame = true)
+        }
+        composable(Screen.LOSE.name) {
+          game.RenderLoseScreen()
         }
       }
     }
