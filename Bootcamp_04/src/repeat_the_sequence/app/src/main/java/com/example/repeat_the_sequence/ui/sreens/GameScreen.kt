@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,8 +18,11 @@ import com.example.repeat_the_sequence.ui.buttons.OptionButton
 import com.example.repeat_the_sequence.ui.buttons.SoundButton
 import com.example.repeat_the_sequence.ui.elements.GameInfo
 import com.example.repeat_the_sequence.ui.elements.GameLogo
+import com.example.repeat_the_sequence.ui.elements.InvitationText
 import com.example.repeat_the_sequence.ui.elements.LoseInfo
 import com.example.repeat_the_sequence.view_model.SimonGameViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class Game(
   private val context: Context,
@@ -32,17 +36,17 @@ class Game(
 
   @Composable
   fun RenderGameScreen(isFreeGame: Boolean) {
-    val lvl = remember {
-      mutableStateOf(currentLevel)
-    }
+    val lvl = remember { mutableStateOf(1) }
+    val record = rememberSaveable { mutableStateOf(savedRecord) }
+    val invitation = remember { mutableStateOf("") }
+    val playButtonText = remember { mutableStateOf("play") }
+    val status = remember { mutableStateOf(GameState.DEFAULT) }
+    val isSoundButtonBlocked = remember { mutableStateOf(true) }
+    val coroutineScope = rememberCoroutineScope()
     currentLevel = lvl.value
-    val record = rememberSaveable {
-      mutableStateOf(savedRecord)
-    }
     currentRecord = record.value
-    val status = remember {
-      mutableStateOf(GameState.DEFAULT)
-    }
+
+
     Column(
       Modifier
         .fillMaxSize()
@@ -57,6 +61,7 @@ class Game(
       ) {
         BackArrow(description = "back_arrow_menu") {
           navController.navigate(Screen.MENU.name) {
+            gameViewModel.endGame()
             popUpTo(Screen.GAME.name) { inclusive = true }
           }
         }
@@ -67,26 +72,33 @@ class Game(
         GameInfo("level", lvl)
         GameInfo("record", record)
       }
-      Spacer(modifier = Modifier.size(80.dp))
+      InvitationText(lvl, invitation, playButtonText, isSoundButtonBlocked)
       Row {
-        SoundButton("sound_1", "\uD83D\uDC37") {
-          gameViewModel.addPlayerSequence("sound_1", status, lvl, record, context)
+        SoundButton("sound_1", "\uD83D\uDC37", isSoundButtonBlocked) {
+          gameViewModel.addPlayerSequence(isFreeGame, "sound_1", status, lvl, record, context)
         }
-        SoundButton("sound_2", "\uD83D\uDC38") {
-          gameViewModel.addPlayerSequence("sound_2", status, lvl, record, context)
+        SoundButton("sound_2", "\uD83D\uDC38", isSoundButtonBlocked) {
+          gameViewModel.addPlayerSequence(isFreeGame, "sound_2", status, lvl, record, context)
         }
       }
       Row {
-        SoundButton("sound_3", "\uD83D\uDC3B") {
-          gameViewModel.addPlayerSequence("sound_3", status, lvl, record, context)
+        SoundButton("sound_3", "\uD83D\uDC3B", isSoundButtonBlocked) {
+          gameViewModel.addPlayerSequence(isFreeGame, "sound_3", status, lvl, record, context)
         }
-        SoundButton("sound_4", "\uD83D\uDC2E") {
-          gameViewModel.addPlayerSequence("sound_4", status, lvl, record, context)
+        SoundButton("sound_4", "\uD83D\uDC2E", isSoundButtonBlocked) {
+          gameViewModel.addPlayerSequence(isFreeGame, "sound_4", status, lvl, record, context)
         }
       }
       Spacer(modifier = Modifier.weight(1f))
-      if (!isFreeGame) OptionButton(if (lvl.value == 1) "play" else "next level") {
+      if (!isFreeGame) OptionButton(playButtonText.value) {
+        isSoundButtonBlocked.value = true
+        invitation.value = "Listen carefully"
         gameViewModel.startGame(context, lvl)
+        coroutineScope.launch {
+          delay(2000 * lvl.value.toLong())
+          isSoundButtonBlocked.value = false
+          invitation.value = "It's your turn"
+        }
       }
     }
   }
@@ -105,14 +117,15 @@ class Game(
       OptionButton("try again") {
         navController.navigate(Screen.GAME.name) {
           popUpTo(Screen.LOSE.name) { inclusive = true }
+          currentLevel = 1
         }
       }
       OptionButton("menu") {
         navController.navigate(Screen.MENU.name) {
           popUpTo(Screen.LOSE.name) { inclusive = true }
+          currentLevel = 1
         }
       }
     }
-    currentLevel = 1
   }
 }

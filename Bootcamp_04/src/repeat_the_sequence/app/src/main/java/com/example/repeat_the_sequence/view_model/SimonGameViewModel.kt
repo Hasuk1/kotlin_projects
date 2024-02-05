@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.compose.runtime.MutableState
+import androidx.compose.ui.unit.TextUnit
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.repeat_the_sequence.R
@@ -21,9 +22,13 @@ class SimonGameViewModel(private val navController: NavController) : ViewModel()
   )
   private val handler = Handler(Looper.getMainLooper())
   private val sequence = mutableListOf<Pair<String, Int>>()
+  private val emojiSequence = mutableListOf<MutableState<TextUnit>>()
   private var playerSequence = mutableListOf<Pair<String, Int>>()
 
-  fun startGame(context: Context, lvl: MutableState<Int>) {
+  fun startGame(
+    context: Context,
+    lvl: MutableState<Int>,
+  ) {
     playerSequence.clear()
     if (lvl.value == 1) sequence.clear()
     sequence.add(sounds[(Math.random() * 4).toInt()])
@@ -33,7 +38,13 @@ class SimonGameViewModel(private val navController: NavController) : ViewModel()
     Log.d("MyLog", "============================")
   }
 
+  fun endGame() {
+    playerSequence.clear()
+    sequence.clear()
+  }
+
   fun addPlayerSequence(
+    isFreeGame: Boolean,
     soundName: String,
     status: MutableState<GameState>,
     lvl: MutableState<Int>,
@@ -47,9 +58,11 @@ class SimonGameViewModel(private val navController: NavController) : ViewModel()
       "sound_4" -> Pair(soundName, R.raw.sound_4)
       else -> Pair(soundName, R.raw.sound_1)
     }
-    playerSequence.add(soundId)
     playSound(context, soundId.second)
-    if (playerSequence.size == sequence.size) checkResult(status, lvl, record, context)
+    if (!isFreeGame) {
+      playerSequence.add(soundId)
+      checkResult(status, lvl, record, context)
+    }
   }
 
   private fun checkResult(
@@ -58,21 +71,33 @@ class SimonGameViewModel(private val navController: NavController) : ViewModel()
     record: MutableState<Int>,
     context: Context
   ) {
-    if (playerSequence == sequence) {
+    var result = true
+    for (i in 0 until playerSequence.size) {
+      if (playerSequence[i] == sequence[i]) {
+        continue
+      } else {
+        result = false
+      }
+    }
+    if (playerSequence.size == sequence.size && result) {
       status.value = GameState.WIN
       lvl.value++
-      if (lvl.value > record.value) {
-        record.value = lvl.value
+      if (lvl.value > record.value + 1) {
+        record.value = lvl.value-1
         context.getSharedPreferences("record", Context.MODE_PRIVATE).edit()
           .putInt("record", record.value).apply()
       }
-    } else {
+    } else if (!result) {
       status.value = GameState.LOSE
       navController.navigate(Screen.LOSE.name) { popUpTo(Screen.GAME.name) { inclusive = true } }
     }
   }
 
-  private fun playSoundDelayed(context: Context, index: Int, delayMillis: Long) {
+  private fun playSoundDelayed(
+    context: Context,
+    index: Int,
+    delayMillis: Long
+  ) {
     Log.d("MyLog", "soundName: ${sequence[index].first}")
     handler.postDelayed({
       playSound(context, sequence[index].second)
