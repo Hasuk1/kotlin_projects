@@ -9,10 +9,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.repeat_the_sequence.R
@@ -21,11 +20,10 @@ import com.example.repeat_the_sequence.R
 fun SoundButton(
   description: String,
   emoji: String,
-  emojiSize:MutableState<TextUnit>,
   isBlocked: MutableState<Boolean> = mutableStateOf(true),
   onClick: () -> Unit
 ) {
-  val blockedColorFilter = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
+  val blockedColorFilter = ColorFilter.lighting(Color.DarkGray, Color.DarkGray)
   Box(
     modifier = Modifier
       .padding(5.dp)
@@ -43,7 +41,7 @@ fun SoundButton(
     )
     Text(
       text = emoji,
-      fontSize = emojiSize.value,
+      fontSize = 35.sp,
       modifier = Modifier
         .align(Alignment.Center)
     )

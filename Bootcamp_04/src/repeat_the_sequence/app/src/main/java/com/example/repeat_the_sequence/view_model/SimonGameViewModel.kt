@@ -7,7 +7,6 @@ import android.os.Looper
 import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.repeat_the_sequence.R
@@ -29,13 +28,10 @@ class SimonGameViewModel(private val navController: NavController) : ViewModel()
   fun startGame(
     context: Context,
     lvl: MutableState<Int>,
-    listEmojiSize: MutableList<MutableState<TextUnit>>
   ) {
     playerSequence.clear()
     if (lvl.value == 1) sequence.clear()
-    val randomIndex = (Math.random() * 4).toInt()
-    sequence.add(sounds[randomIndex])
-    emojiSequence.add(listEmojiSize[randomIndex])
+    sequence.add(sounds[(Math.random() * 4).toInt()])
     for (i in 0 until lvl.value) {
       playSoundDelayed(context, i, (2000 * i).toLong())
     }
@@ -86,8 +82,8 @@ class SimonGameViewModel(private val navController: NavController) : ViewModel()
     if (playerSequence.size == sequence.size && result) {
       status.value = GameState.WIN
       lvl.value++
-      if (lvl.value > record.value) {
-        record.value = lvl.value
+      if (lvl.value > record.value + 1) {
+        record.value = lvl.value-1
         context.getSharedPreferences("record", Context.MODE_PRIVATE).edit()
           .putInt("record", record.value).apply()
       }
@@ -103,10 +99,8 @@ class SimonGameViewModel(private val navController: NavController) : ViewModel()
     delayMillis: Long
   ) {
     Log.d("MyLog", "soundName: ${sequence[index].first}")
-    emojiSequence[index].value = 50.sp
     handler.postDelayed({
       playSound(context, sequence[index].second)
-      emojiSequence[index].value = 35.sp
     }, delayMillis)
   }
 
