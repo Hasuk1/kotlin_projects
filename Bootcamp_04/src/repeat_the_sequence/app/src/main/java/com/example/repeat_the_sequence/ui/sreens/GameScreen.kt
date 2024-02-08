@@ -9,6 +9,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.repeat_the_sequence.enums.GameState
@@ -20,6 +21,7 @@ import com.example.repeat_the_sequence.ui.elements.GameInfo
 import com.example.repeat_the_sequence.ui.elements.GameLogo
 import com.example.repeat_the_sequence.ui.elements.InvitationText
 import com.example.repeat_the_sequence.ui.elements.LoseInfo
+import com.example.repeat_the_sequence.ui.theme.BackgroundImage
 import com.example.repeat_the_sequence.view_model.SimonGameViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -41,11 +43,10 @@ class Game(
     val invitation = remember { mutableStateOf("") }
     val playButtonText = remember { mutableStateOf("play") }
     val status = remember { mutableStateOf(GameState.DEFAULT) }
-    val isSoundButtonBlocked = remember { mutableStateOf(true) }
+    val isSoundButtonBlocked = remember { mutableStateOf(!isFreeGame) }
     val coroutineScope = rememberCoroutineScope()
     currentLevel = lvl.value
     currentRecord = record.value
-
 
     Column(
       Modifier
@@ -127,5 +128,19 @@ class Game(
         }
       }
     }
+  }
+}
+
+@Preview
+@Composable
+fun RenderGameSettingsScreen(){
+  BackgroundImage()
+  Column(
+    Modifier
+      .fillMaxSize()
+      .padding(10.dp),
+    horizontalAlignment = Alignment.CenterHorizontally
+  ) {
+
   }
 }

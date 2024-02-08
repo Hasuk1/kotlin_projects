@@ -22,7 +22,6 @@ class SimonGameViewModel(private val navController: NavController) : ViewModel()
   )
   private val handler = Handler(Looper.getMainLooper())
   private val sequence = mutableListOf<Pair<String, Int>>()
-  private val emojiSequence = mutableListOf<MutableState<TextUnit>>()
   private var playerSequence = mutableListOf<Pair<String, Int>>()
 
   fun startGame(

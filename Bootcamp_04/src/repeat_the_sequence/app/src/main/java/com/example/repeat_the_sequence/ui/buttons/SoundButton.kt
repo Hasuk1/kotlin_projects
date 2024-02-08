@@ -20,7 +20,7 @@ import com.example.repeat_the_sequence.R
 fun SoundButton(
   description: String,
   emoji: String,
-  isBlocked: MutableState<Boolean> = mutableStateOf(true),
+  isBlocked: MutableState<Boolean>,
   onClick: () -> Unit
 ) {
   val blockedColorFilter = ColorFilter.lighting(Color.DarkGray, Color.DarkGray)
