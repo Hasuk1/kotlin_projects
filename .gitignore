@@ -3,6 +3,6 @@
 *.out
 *.build
 *build
-*.gradle
+.gradle
 *.DS_store
 *.jar
