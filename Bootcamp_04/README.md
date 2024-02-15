@@ -116,7 +116,7 @@ app
 │   │   │   │       ├── Color.kt
 │   │   │   │       ├── Shape.kt
 │   │   │   │       └── Theme.kt
-│   │   │   └── viewmodel
+│   │   │   ├── viewmodel
 │   │   │   │   └── SimonGameViewModel.kt
 │   │   │   └── MainActivity.kt
 │   │   └── ...
