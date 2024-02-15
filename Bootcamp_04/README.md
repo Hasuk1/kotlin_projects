@@ -79,8 +79,8 @@ app
 │   ├── main
 │   │   ├── java/com/example/repeat_the_sequence
 │   │   │   ├── enums
-│   │   │   │   ├── GameState.kt
-│   │   │   │   └── AppScreens.kt
+│   │   │   │   ├── AppScreens.kt
+│   │   │   │   └── GameState.kt
 │   │   │   ├── nav
 │   │   │   │   ├── NavHost.kt
 │   │   │   │   └── Screens.kt
@@ -90,24 +90,29 @@ app
 │   │   │   │   │   │   ├── BackArrowButton.kt
 │   │   │   │   │   │   ├── RectangleButton.kt
 │   │   │   │   │   │   └── SquareButton.kt
-│   │   │   │   │   ├── switches
-│   │   │   │   │   │   ├── SoundEnabledSwitcher.kt
-│   │   │   │   │   │   └── ButtonBacklightSwitcher.kt
-│   │   │   │   │   ├── sliders
-│   │   │   │   │   │   └── SoundDelaySlider.kt
 │   │   │   │   │   ├── combobox
 │   │   │   │   │   │   └── SoundListComboBox.kt
 │   │   │   │   │   ├── images
 │   │   │   │   │   │   ├── BackgroundImage.kt
 │   │   │   │   │   │   └── GameLogo.kt
-│   │   │   │   │   └── information
-│   │   │   │   │       ├── GameInfo.kt
-│   │   │   │   │       ├── LoseInfo.kt
-│   │   │   │   │       └── GameInvitation.kt
+│   │   │   │   │   ├── information
+│   │   │   │   │   │   ├── GameInfo.kt
+│   │   │   │   │   │   ├── GameInvitation.kt
+│   │   │   │   │   │   └── LoseInfo.kt
+│   │   │   │   │   ├── sliders
+│   │   │   │   │   │   └── SoundDelaySlider.kt
+│   │   │   │   │   └── switches
+│   │   │   │   │       ├── SoundEnabledSwitcher.kt
+│   │   │   │   │       └── ButtonBacklightSwitcher.kt
+
+
+
+
 │   │   │   │   ├── screens
-│   │   │   │   │   ├── GameScreen.kt
-│   │   │   │   │   ├── GameSettingsScreen.kt
 │   │   │   │   │   ├── AboutAppScreen.kt
+│   │   │   │   │   ├── GameSettingsScreen.kt
+│   │   │   │   │   ├── GameScreen.kt
+│   │   │   │   │   ├── MenuScreen.kt
 │   │   │   │   │   └── LoseScreen.kt
 │   │   │   │   ├── types
 │   │   │   │   │   └── Type.kt
