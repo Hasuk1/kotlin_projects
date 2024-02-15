@@ -32,9 +32,7 @@ fun MenuScreen(navController: NavHostController) {
       }
     }
     OptionButton("Settings") {
-      navController.navigate(Screen.SETTINGS.name) {
-        popUpTo(Screen.MENU.name) { inclusive = true }
-      }
+      navController.navigate(Screen.SETTINGS.name)
     }
     OptionButton("About") {
       navController.navigate(Screen.ABOUT.name) {

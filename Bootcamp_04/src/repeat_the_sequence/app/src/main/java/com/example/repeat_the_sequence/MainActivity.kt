@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.repeat_the_sequence.enums.Screen
 import com.example.repeat_the_sequence.ui.sreens.Game
 import com.example.repeat_the_sequence.ui.sreens.MenuScreen
+import com.example.repeat_the_sequence.ui.sreens.RenderGameSettingsScreen
 import com.example.repeat_the_sequence.ui.theme.BackgroundImage
 
 class MainActivity : ComponentActivity() {
@@ -30,6 +31,9 @@ class MainActivity : ComponentActivity() {
         }
         composable(Screen.LOSE.name) {
           game.RenderLoseScreen()
+        }
+        composable(Screen.SETTINGS.name){
+          RenderGameSettingsScreen()
         }
       }
     }
