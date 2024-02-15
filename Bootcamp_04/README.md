@@ -73,37 +73,52 @@ Add in Settings the option "Button highlight", which disables/enables a visible 
 ## Bonus exercise 6: Sound banks
 Add to Settings the ability to change 2-3 sound themes
 
-```
+```kotlin
 app
 ├── src
 │   ├── main
-│   │   ├── java/com/example/yourapp
-│   │   │   ├── screens
-│   │   │   │   ├── GameInfoScreen.kt
-│   │   │   │   ├── GameLogoScreen.kt
-│   │   │   │   ├── InvitationTextScreen.kt
-│   │   │   │   ├── LoseInfoScreen.kt
-│   │   │   │   ├── GameScreen.kt
-│   │   │   │   └── LoseScreen.kt
+│   │   ├── java/com/example/repeat_the_sequence
 │   │   │   ├── enums
-│   │   │   │   ├── GameMode.kt
-│   │   │   │   ├── DifficultyLevel.kt
-│   │   │   │   ├── ColorTheme.kt
-│   │   │   │   └── Type.kt
-│   │   │   ├── theme
-│   │   │   │   ├── LightTheme.kt
-│   │   │   │   └── DarkTheme.kt
-│   │   │   ├── Type.kt
-│   │   │   ├── MainActivity.kt
+│   │   │   │   ├── GameState.kt
+│   │   │   │   └── AppScreens.kt
 │   │   │   ├── nav
 │   │   │   │   ├── NavHost.kt
 │   │   │   │   └── Screens.kt
-│   │   │   ├── viewmodel
+│   │   │   ├── ui
+│   │   │   │   ├── components
+│   │   │   │   │   ├── buttons
+│   │   │   │   │   │   ├── BackArrowButton.kt
+│   │   │   │   │   │   ├── RectangleButton.kt
+│   │   │   │   │   │   └── SquareButton.kt
+│   │   │   │   │   ├── switches
+│   │   │   │   │   │   ├── SoundEnabledSwitcher.kt
+│   │   │   │   │   │   └── ButtonBacklightSwitcher.kt
+│   │   │   │   │   ├── sliders
+│   │   │   │   │   │   └── SoundDelaySlider.kt
+│   │   │   │   │   ├── combobox
+│   │   │   │   │   │   └── SoundListComboBox.kt
+│   │   │   │   │   ├── images
+│   │   │   │   │   │   ├── BackgroundImage.kt
+│   │   │   │   │   │   └── GameLogo.kt
+│   │   │   │   │   └── information
+│   │   │   │   │       ├── GameInfo.kt
+│   │   │   │   │       ├── LoseInfo.kt
+│   │   │   │   │       └── GameInvitation.kt
+│   │   │   │   ├── screens
+│   │   │   │   │   ├── GameScreen.kt
+│   │   │   │   │   ├── GameSettingsScreen.kt
+│   │   │   │   │   ├── AboutAppScreen.kt
+│   │   │   │   │   └── LoseScreen.kt
+│   │   │   │   ├── types
+│   │   │   │   │   └── Type.kt
+│   │   │   │   └── theme
+│   │   │   │       ├── Color.kt
+│   │   │   │       ├── Shape.kt
+│   │   │   │       └── Theme.kt
+│   │   │   └── viewmodel
 │   │   │   │   └── SimonGameViewModel.kt
-│   │   │   ├── components
-│   │   │   │   ├── CustomButton.kt
-│   │   │   │   └── OtherComponent.kt
-│   │   │   └── utils
-│   │   │       └── UtilityClass.kt
+│   │   │   └── MainActivity.kt
+│   │   └── ...
 │   └── ...
+└── ...
 ```
