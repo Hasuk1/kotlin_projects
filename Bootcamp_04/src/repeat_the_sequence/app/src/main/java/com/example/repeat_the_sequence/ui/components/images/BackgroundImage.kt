@@ -1,4 +1,4 @@
-package com.example.repeat_the_sequence.ui.theme
+package com.example.repeat_the_sequence.ui.components.images
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize

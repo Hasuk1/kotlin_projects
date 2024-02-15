@@ -1,4 +1,4 @@
-package com.example.repeat_the_sequence.ui.elements
+package com.example.repeat_the_sequence.ui.components.information
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.repeat_the_sequence.R
-import com.example.repeat_the_sequence.ui.theme.stardewValleyFont
+import com.example.repeat_the_sequence.ui.types.stardewValleyFont
 
 @Composable
 fun LoseInfo(lvl: Int, record: Int) {

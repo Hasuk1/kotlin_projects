@@ -1,4 +1,4 @@
-package com.example.repeat_the_sequence.ui.theme
+package com.example.repeat_the_sequence.ui.types
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

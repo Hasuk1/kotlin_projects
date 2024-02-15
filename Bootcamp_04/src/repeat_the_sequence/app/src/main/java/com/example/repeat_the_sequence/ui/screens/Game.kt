@@ -1,141 +1,48 @@
-package com.example.repeat_the_sequence.ui.sreens
+package com.example.repeat_the_sequence.ui.screens
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.repeat_the_sequence.R
-import com.example.repeat_the_sequence.enums.GameState
-import com.example.repeat_the_sequence.enums.Screen
-import com.example.repeat_the_sequence.ui.buttons.BackArrow
-import com.example.repeat_the_sequence.ui.buttons.OptionButton
-import com.example.repeat_the_sequence.ui.buttons.SoundButton
-import com.example.repeat_the_sequence.ui.elements.GameInfo
-import com.example.repeat_the_sequence.ui.elements.GameLogo
-import com.example.repeat_the_sequence.ui.elements.InvitationText
-import com.example.repeat_the_sequence.ui.elements.LoseInfo
-import com.example.repeat_the_sequence.ui.theme.BackgroundImage
+import com.example.repeat_the_sequence.ui.components.buttons.BackArrowButton
+import com.example.repeat_the_sequence.ui.components.images.BackgroundImage
 import com.example.repeat_the_sequence.ui.theme.DarkGreen
 import com.example.repeat_the_sequence.ui.theme.LightGreen
-import com.example.repeat_the_sequence.ui.theme.stardewValleyFont
-import com.example.repeat_the_sequence.view_model.SimonGameVM
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-
-class Game(
-  context: Context, private val navController: NavController
-) {
-  private val vm = SimonGameVM(navController, context)
-  private var currentLevel = 1
-  private var currentRecord = 0
-  private var savedRecord =
-    context.getSharedPreferences("record", Context.MODE_PRIVATE).getInt("record", 1)
-
-  @Composable
-  fun RenderGameScreen(isFreeGame: Boolean) {
-    val lvl = remember { mutableStateOf(1) }
-    val record = rememberSaveable { mutableStateOf(savedRecord) }
-    val invitation = remember { mutableStateOf("") }
-    val playButtonText = remember { mutableStateOf("play") }
-    val status = remember { mutableStateOf(GameState.DEFAULT) }
-    val isSoundButtonBlocked = remember { mutableStateOf(!isFreeGame) }
-    val coroutineScope = rememberCoroutineScope()
-    currentLevel = lvl.value
-    currentRecord = record.value
-
-    Column(
-      Modifier
-        .fillMaxSize()
-        .padding(10.dp),
-      horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-      Column(
-        modifier = Modifier
-          .fillMaxWidth()
-          .height(30.dp),
-        horizontalAlignment = Alignment.Start,
-      ) {
-        BackArrow(description = "back_arrow_menu") {
-          navController.navigate(Screen.MENU.name) {
-            vm.endGame()
-            popUpTo(Screen.GAME.name) { inclusive = true }
-          }
-        }
+import com.example.repeat_the_sequence.ui.types.stardewValleyFont
+/*
+@Composable
+fun RenderLoseScreen() {
+  Column(
+    Modifier
+      .padding(10.dp)
+      .fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
+  ) {
+    Spacer(Modifier.fillMaxSize(0.2F))
+    LoseInfo(currentLevel, currentRecord)
+    Spacer(Modifier.size(20.dp))
+    OptionButton("try again") {
+      navController.navigate(Screen.GAME.name) {
+        popUpTo(Screen.LOSE.name) { inclusive = true }
+        currentLevel = 1
       }
-      if (isFreeGame) {
-        GameLogo()
-      } else {
-        GameInfo("level", lvl)
-        GameInfo("record", record)
-      }
-      InvitationText(lvl, invitation, playButtonText, isSoundButtonBlocked)
-      Row {
-        SoundButton("sound_1", "\uD83D\uDC37", isSoundButtonBlocked) {
-          vm.addPlayerSequence(isFreeGame, "sound_1", status, lvl, record)
-        }
-        SoundButton("sound_2", "\uD83D\uDC38", isSoundButtonBlocked) {
-          vm.addPlayerSequence(isFreeGame, "sound_2", status, lvl, record)
-        }
-      }
-      Row {
-        SoundButton("sound_3", "\uD83D\uDC3B", isSoundButtonBlocked) {
-          vm.addPlayerSequence(isFreeGame, "sound_3", status, lvl, record)
-        }
-        SoundButton("sound_4", "\uD83D\uDC2E", isSoundButtonBlocked) {
-          vm.addPlayerSequence(isFreeGame, "sound_4", status, lvl, record)
-        }
-      }
-      Spacer(modifier = Modifier.weight(1f))
-      if (!isFreeGame) OptionButton(playButtonText.value) {
-        isSoundButtonBlocked.value = true
-        invitation.value = "Listen carefully"
-        vm.startGame(lvl)
-        coroutineScope.launch {
-          delay(2000 * lvl.value.toLong())
-          isSoundButtonBlocked.value = false
-          invitation.value = "It's your turn"
-        }
+    }
+    OptionButton("menu") {
+      navController.navigate(Screen.MENU.name) {
+        popUpTo(Screen.LOSE.name) { inclusive = true }
+        currentLevel = 1
       }
     }
   }
-
-  @Composable
-  fun RenderLoseScreen() {
-    Column(
-      Modifier
-        .padding(10.dp)
-        .fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-      Spacer(Modifier.fillMaxSize(0.2F))
-      LoseInfo(currentLevel, currentRecord)
-      Spacer(Modifier.size(20.dp))
-      OptionButton("try again") {
-        navController.navigate(Screen.GAME.name) {
-          popUpTo(Screen.LOSE.name) { inclusive = true }
-          currentLevel = 1
-        }
-      }
-      OptionButton("menu") {
-        navController.navigate(Screen.MENU.name) {
-          popUpTo(Screen.LOSE.name) { inclusive = true }
-          currentLevel = 1
-        }
-      }
-    }
-  }
-}
+}*/
 
 @Composable
 fun RenderGameSettingsScreen() {
@@ -145,7 +52,7 @@ fun RenderGameSettingsScreen() {
       .padding(10.dp)
       .fillMaxWidth()
   ) {
-    BackArrow(description = "test") {
+    BackArrowButton(description = "test") {
 
     }
   }

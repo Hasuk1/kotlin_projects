@@ -1,4 +1,4 @@
-package com.example.repeat_the_sequence.ui.buttons
+package com.example.repeat_the_sequence.ui.components.buttons
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.repeat_the_sequence.R
 
 @Composable
-fun BackArrow(description: String, onClick: () -> Unit) {
+fun BackArrowButton(description: String, onClick: () -> Unit) {
   Box(modifier = Modifier
     .width(33.dp)
     .height(30.dp)

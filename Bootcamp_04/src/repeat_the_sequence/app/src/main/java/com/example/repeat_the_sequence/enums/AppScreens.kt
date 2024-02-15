@@ -1,6 +1,6 @@
 package com.example.repeat_the_sequence.enums
 
-enum class Screen(name: String) {
+enum class AppScreens(val route: String) {
   MENU("MenuScreen"),
   GAME("GameScreen"),
   FREEGAME("FreeGameScreen"),
