@@ -104,10 +104,6 @@ app
 │   │   │   │   │   └── switches
 │   │   │   │   │       ├── SoundEnabledSwitcher.kt
 │   │   │   │   │       └── ButtonBacklightSwitcher.kt
-
-
-
-
 │   │   │   │   ├── screens
 │   │   │   │   │   ├── AboutAppScreen.kt
 │   │   │   │   │   ├── GameSettingsScreen.kt
