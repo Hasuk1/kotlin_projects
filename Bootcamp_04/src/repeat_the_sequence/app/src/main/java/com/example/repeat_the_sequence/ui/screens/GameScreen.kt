@@ -8,7 +8,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.repeat_the_sequence.enums.GameState
+import com.example.repeat_the_sequence.enums.AppScreens
+import com.example.repeat_the_sequence.enums.ButtonState
 import com.example.repeat_the_sequence.ui.components.buttons.BackArrowButton
 import com.example.repeat_the_sequence.ui.components.buttons.RectangleButton
 import com.example.repeat_the_sequence.ui.components.buttons.SquareButton
@@ -25,9 +26,10 @@ fun GameScreen(isFreeGame: Boolean, viewModel: SimonGameVM) {
   val record = remember { viewModel.record }
   val invitation = remember { mutableStateOf("") }
   val playButtonText = remember { mutableStateOf("play") }
-  val status = remember { mutableStateOf(GameState.DEFAULT) }
   val isSoundButtonBlocked = remember { mutableStateOf(!isFreeGame) }
   val coroutineScope = rememberCoroutineScope()
+
+  val buttonState = remember { mutableStateOf(Pair("",ButtonState.BLOCKED))  }
 
   Column(
     Modifier
@@ -43,6 +45,11 @@ fun GameScreen(isFreeGame: Boolean, viewModel: SimonGameVM) {
     ) {
       BackArrowButton(description = "back_arrow_menu") {
         viewModel.endGame()
+        viewModel.getNavController().navigate(AppScreens.MENU.route) {
+          popUpTo(AppScreens.MENU.route) {
+            inclusive = true
+          }
+        }
       }
     }
     if (isFreeGame) {
@@ -53,29 +60,29 @@ fun GameScreen(isFreeGame: Boolean, viewModel: SimonGameVM) {
     }
     GameInvitation(lvl, invitation, playButtonText, isSoundButtonBlocked)
     Row {
-      SquareButton("sound_1", "\uD83D\uDC37", isSoundButtonBlocked) {
-        viewModel.addPlayerSequence("sound_1", status)
+      SquareButton("sound_1", "\uD83D\uDC37", buttonState) {
+        viewModel.addPlayerSequence("sound_1")
       }
-      SquareButton("sound_2", "\uD83D\uDC38", isSoundButtonBlocked) {
-        viewModel.addPlayerSequence("sound_2", status)
+      SquareButton("sound_2", "\uD83D\uDC38", buttonState) {
+        viewModel.addPlayerSequence("sound_2")
       }
     }
     Row {
-      SquareButton("sound_3", "\uD83D\uDC3B", isSoundButtonBlocked) {
-        viewModel.addPlayerSequence("sound_3", status)
+      SquareButton("sound_3", "\uD83D\uDC3B", buttonState) {
+        viewModel.addPlayerSequence("sound_3")
       }
-      SquareButton("sound_4", "\uD83D\uDC2E", isSoundButtonBlocked) {
-        viewModel.addPlayerSequence("sound_4", status)
+      SquareButton("sound_4", "\uD83D\uDC2E", buttonState) {
+        viewModel.addPlayerSequence("sound_4")
       }
     }
     Spacer(modifier = Modifier.weight(1f))
     if (!isFreeGame) RectangleButton(playButtonText.value) {
-      isSoundButtonBlocked.value = true
+      buttonState.value = Pair("All",ButtonState.BLOCKED)
       invitation.value = "Listen carefully"
-      viewModel.startGame()
+      viewModel.startGame(buttonState)
       coroutineScope.launch {
-        delay(2000 * lvl.value.toLong())
-        isSoundButtonBlocked.value = false
+        delay(1000 * lvl.value.toLong())
+        buttonState.value = Pair("all",ButtonState.AVAILABLE)
         invitation.value = "It's your turn"
       }
     }

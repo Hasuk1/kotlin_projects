@@ -13,7 +13,6 @@ import com.example.repeat_the_sequence.viewmodel.SimonGameVM
 
 class MainActivity : ComponentActivity() {
   @SuppressLint("SourceLockedOrientationActivity")
-
   override fun onCreate(savedInstanceState: Bundle?) {
     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     super.onCreate(savedInstanceState)
