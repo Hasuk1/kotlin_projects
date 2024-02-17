@@ -3,15 +3,15 @@ package com.example.repeat_the_sequence.viewmodel
 import android.annotation.SuppressLint
 import android.content.Context
 import android.media.MediaPlayer
-import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.core.os.HandlerCompat
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.repeat_the_sequence.R
 import com.example.repeat_the_sequence.enums.AppScreens
-import com.example.repeat_the_sequence.enums.ButtonState
 import com.example.repeat_the_sequence.enums.GameMode
 
 class SimonGameVM(
@@ -25,36 +25,73 @@ class SimonGameVM(
     Pair("sound_4", R.raw.sound_4)
   )
   var level = mutableStateOf(1)
-  private var savedRecord =
-    context.getSharedPreferences("record", Context.MODE_PRIVATE).getInt("record", 1)
+  var savedRecord = context.getSharedPreferences("record", Context.MODE_PRIVATE).getInt("record", 1)
   var record = mutableStateOf(savedRecord)
-  private var gameMode = GameMode.DEFAULTGAME
+
+  var gameMode = GameMode.DEFAULTGAME
+  private var isSoundEnabledSaved = mutableStateOf(
+    context.getSharedPreferences("is_sound_enabled", Context.MODE_PRIVATE)
+      .getBoolean("is_sound_enabled", true)
+  )
+  private var soundDelaySaved = mutableStateOf(
+    context.getSharedPreferences("sound_delay", Context.MODE_PRIVATE).getLong("sound_delay", 1000)
+  )
+  private var isButtonBacklightEnabledSaved = mutableStateOf(
+    context.getSharedPreferences("button_backlight", Context.MODE_PRIVATE)
+      .getBoolean("button_backlight", true)
+  )
+
   private val sequence = mutableListOf<Pair<String, Int>>()
   private var playerSequence = mutableListOf<Pair<String, Int>>()
-  private val handler = Handler()
+
+  private val handler = HandlerCompat.createAsync(Looper.getMainLooper())
 
   fun getNavController(): NavController {
     return navController
   }
 
-  fun gameMode(isFreeGame: Boolean): Boolean {
-    gameMode = when (isFreeGame) {
-      true -> GameMode.FREEGAME
-      false -> GameMode.DEFAULTGAME
-    }
-    return isFreeGame
+  fun getSoundEnabledStatus(): MutableState<Boolean> {
+    return isSoundEnabledSaved
   }
 
-  fun startGame(buttonState: MutableState<Pair<String, ButtonState>>) {
+  fun getSoundDelaySec(): MutableState<Long> {
+    return mutableStateOf(soundDelaySaved.value / 100)
+  }
+
+  fun getButtonBacklightStatus(): MutableState<Boolean> {
+    return isButtonBacklightEnabledSaved
+  }
+
+  fun setSoundEnabledStatus(newStatus: Boolean) {
+    isSoundEnabledSaved.value = newStatus
+    context.getSharedPreferences("is_sound_enabled", Context.MODE_PRIVATE).edit()
+      .putBoolean("is_sound_enabled", newStatus).apply()
+  }
+
+  fun setSoundDelay(newDelay: Long) {
+    soundDelaySaved.value = newDelay
+    context.getSharedPreferences("sound_delay", Context.MODE_PRIVATE).edit()
+      .putLong("sound_delay", newDelay).apply()
+  }
+
+  fun setButtonBacklightStatus(newStatus: Boolean) {
+    isButtonBacklightEnabledSaved.value = newStatus
+    context.getSharedPreferences("button_backlight", Context.MODE_PRIVATE).edit()
+      .putBoolean("button_backlight", newStatus).apply()
+  }
+
+  fun startGame(buttonText: String) {
     playerSequence.clear()
     if (level.value == 1) sequence.clear()
-    val sound = sounds[(Math.random() * 4).toInt()]
-    sequence.add(sound)
+    if (buttonText != "Repeat") {
+      val sound = sounds[(Math.random() * 4).toInt()]
+      sequence.add(sound)
+    }
     for (i in 0 until level.value) {
-      playSound(sequence[i].second, i.toLong() * 1000, buttonState,sound.first)
+      playSound(sequence[i].second, i.toLong() * soundDelaySaved.value)
       Log.d("MyLog", "soundName: ${sequence[i].first}")
     }
-    Log.d("MyLog", "============================")
+    Log.d("MyLog", "========================")
   }
 
   fun endGame() {
@@ -71,7 +108,7 @@ class SimonGameVM(
       "sound_4" -> Pair(soundName, R.raw.sound_4)
       else -> Pair(soundName, R.raw.sound_1)
     }
-    playSound(soundId.second, 0, mutableStateOf(Pair("", ButtonState.AVAILABLE)),soundName)
+    playSound(soundId.second, 0)
     if (gameMode == GameMode.DEFAULTGAME) {
       playerSequence.add(soundId)
       checkResult()
@@ -103,20 +140,15 @@ class SimonGameVM(
     }
   }
 
-  private fun playSound(
-    sound: Int,
-    timeMillis: Long,
-    buttonState: MutableState<Pair<String, ButtonState>>,
-    soundName: String
-  ) {
+  private fun playSound(sound: Int, timeMillis: Long) {
     val mediaPlayer = MediaPlayer.create(context, sound)
-      buttonState.value = Pair(soundName, ButtonState.GLOW)
+    val volume = if (isSoundEnabledSaved.value) 1f else 0f
     handler.postDelayed({
       mediaPlayer.start()
       mediaPlayer.setOnCompletionListener { mp ->
         mp.release()
-        buttonState.value = Pair(soundName, ButtonState.BLOCKED)
       }
+      mediaPlayer.setVolume(volume, volume)
     }, timeMillis)
   }
 }

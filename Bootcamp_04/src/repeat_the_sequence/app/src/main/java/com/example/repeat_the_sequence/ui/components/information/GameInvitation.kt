@@ -6,10 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -39,12 +37,11 @@ fun GameInvitation(
   }
   Text(
     text = invitation.value,
-    style =  TextStyle(shadow = Shadow(Color.Black, Offset(8f,8f),16f)),
+    style = TextStyle(shadow = Shadow(Color.Black, Offset(8f, 8f), 16f)),
     color = Color.White,
     fontSize = 40.sp,
     fontFamily = stardewValleyFont,
     fontWeight = FontWeight.Normal,
-    modifier = Modifier
-      .padding(vertical = 20.dp)
+    modifier = Modifier.padding(vertical = 20.dp)
   )
 }

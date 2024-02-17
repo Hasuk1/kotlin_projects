@@ -8,15 +8,11 @@ import androidx.compose.runtime.Composable
 import com.example.repeat_the_sequence.ui.types.Typography
 
 private val DarkColorPalette = darkColors(
-  primary = Purple200,
-  primaryVariant = Purple700,
-  secondary = Teal200
+  primary = Purple200, primaryVariant = Purple700, secondary = Teal200
 )
 
 private val LightColorPalette = lightColors(
-  primary = Purple500,
-  primaryVariant = Purple700,
-  secondary = Teal200
+  primary = Purple500, primaryVariant = Purple700, secondary = Teal200
 
   /* Other default colors to override
   background = Color.White,
@@ -30,8 +26,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun RepeatTheSequenceTheme(
-  darkTheme: Boolean = isSystemInDarkTheme(),
-  content: @Composable () -> Unit
+  darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit
 ) {
   val colors = if (darkTheme) {
     DarkColorPalette
@@ -40,9 +35,6 @@ fun RepeatTheSequenceTheme(
   }
 
   MaterialTheme(
-    colors = colors,
-    typography = Typography,
-    shapes = Shapes,
-    content = content
+    colors = colors, typography = Typography, shapes = Shapes, content = content
   )
 }

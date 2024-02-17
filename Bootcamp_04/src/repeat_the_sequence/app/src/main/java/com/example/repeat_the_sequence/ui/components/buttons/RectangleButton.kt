@@ -19,16 +19,14 @@ import com.example.repeat_the_sequence.ui.types.stardewValleyFont
 
 @Composable
 fun RectangleButton(buttonText: String, onClick: () -> Unit) {
-  Box(
-    modifier = Modifier
-      .padding(bottom = 20.dp)
-      .width(272.dp)
-      .height(60.dp)
-      .shadow(8.dp, RoundedCornerShape(8.dp),false)
-      .clickable {
-        onClick.invoke()
-      }
-  ) {
+  Box(modifier = Modifier
+    .padding(bottom = 20.dp)
+    .width(272.dp)
+    .height(60.dp)
+    .shadow(8.dp, RoundedCornerShape(8.dp), false)
+    .clickable {
+      if (buttonText != "...") onClick.invoke()
+    }) {
     Image(
       painter = painterResource(id = R.drawable.button),
       contentDescription = buttonText.lowercase().replace(" ", "_"),
@@ -40,8 +38,7 @@ fun RectangleButton(buttonText: String, onClick: () -> Unit) {
       fontSize = 48.sp,
       fontFamily = stardewValleyFont,
       fontWeight = FontWeight.Normal,
-      modifier = Modifier
-        .align(Alignment.Center)
+      modifier = Modifier.align(Alignment.Center)
     )
   }
 }
