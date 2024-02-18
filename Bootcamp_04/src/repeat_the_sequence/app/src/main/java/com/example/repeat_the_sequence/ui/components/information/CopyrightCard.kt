@@ -14,7 +14,7 @@ import com.example.repeat_the_sequence.R
 import com.example.repeat_the_sequence.ui.types.stardewValleyFont
 
 @Composable
-fun CopyrightCard(name:String) {
+fun CopyrightCard(name: String) {
   Box(
     Modifier
       .padding(vertical = 5.dp)

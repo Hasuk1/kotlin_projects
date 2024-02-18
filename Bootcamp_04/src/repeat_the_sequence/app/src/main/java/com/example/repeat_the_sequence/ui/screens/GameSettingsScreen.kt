@@ -8,7 +8,6 @@ import androidx.compose.ui.unit.dp
 import com.example.repeat_the_sequence.enums.AppScreens
 import com.example.repeat_the_sequence.ui.components.buttons.BackArrowButton
 import com.example.repeat_the_sequence.ui.components.combobox.SoundListBox
-import com.example.repeat_the_sequence.ui.components.images.BackgroundImage
 import com.example.repeat_the_sequence.ui.components.sliders.SoundDelaySlider
 import com.example.repeat_the_sequence.ui.components.switches.ButtonBacklightSwitch
 import com.example.repeat_the_sequence.ui.components.switches.SoundEnabledSwitch
@@ -38,6 +37,6 @@ fun GameSettingsScreen(vm: SimonGameVM) {
     ButtonBacklightSwitch("Button backlight", vm)
     SoundEnabledSwitch("Sound", vm)
     SoundDelaySlider("Delay", vm)
-    SoundListBox("Sound theme")
+    SoundListBox("Sound theme", vm)
   }
 }

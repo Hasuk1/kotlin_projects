@@ -20,7 +20,8 @@ fun GameConditionsCard() {
     Modifier
       .padding(vertical = 5.dp)
       .width(350.dp)
-      .height(180.dp), contentAlignment = Alignment.Center
+      .height(180.dp),
+    contentAlignment = Alignment.Center
   ) {
     Image(
       painterResource(R.drawable.game_conditions), "game_conditions", Modifier.fillMaxSize()
@@ -29,7 +30,8 @@ fun GameConditionsCard() {
       modifier = Modifier
         .fillMaxSize()
         .padding(15.dp),
-      horizontalAlignment = Alignment.CenterHorizontally
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.Center
     ) {
       Text(
         text = "Game conditions!",

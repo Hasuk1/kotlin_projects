@@ -10,24 +10,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.core.os.HandlerCompat
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.repeat_the_sequence.R
 import com.example.repeat_the_sequence.enums.AppScreens
 import com.example.repeat_the_sequence.enums.GameMode
+import com.example.repeat_the_sequence.enums.Sounds
+import com.example.repeat_the_sequence.utility.SoundThemeList.animalSound
+import com.example.repeat_the_sequence.utility.SoundThemeList.smsSound
 
 class SimonGameVM(
   private val navController: NavController,
   @SuppressLint("StaticFieldLeak") private val context: Context
 ) : ViewModel() {
-  private val sounds = arrayOf(
-    Pair("sound_1", R.raw.sound_1),
-    Pair("sound_2", R.raw.sound_2),
-    Pair("sound_3", R.raw.sound_3),
-    Pair("sound_4", R.raw.sound_4)
-  )
   var level = mutableStateOf(1)
   var savedRecord = context.getSharedPreferences("record", Context.MODE_PRIVATE).getInt("record", 1)
   var record = mutableStateOf(savedRecord)
-
   var gameMode = GameMode.DEFAULTGAME
   private var isSoundEnabledSaved = mutableStateOf(
     context.getSharedPreferences("is_sound_enabled", Context.MODE_PRIVATE)
@@ -40,9 +35,19 @@ class SimonGameVM(
     context.getSharedPreferences("button_backlight", Context.MODE_PRIVATE)
       .getBoolean("button_backlight", true)
   )
+  private val soundListSaved = mutableStateOf(
+    context.getSharedPreferences("sound_list_tag", Context.MODE_PRIVATE)
+      .getString("sound_list_tag", "animal")
+  )
 
-  private val sequence = mutableListOf<Pair<String, Int>>()
-  private var playerSequence = mutableListOf<Pair<String, Int>>()
+  private val soundList = when (soundListSaved.value) {
+    "animal" -> animalSound
+    "sms" -> smsSound
+    else -> animalSound
+  }
+
+  private val sequence = mutableListOf<Sounds>()
+  private var playerSequence = mutableListOf<Sounds>()
 
   private val handler = HandlerCompat.createAsync(Looper.getMainLooper())
 
@@ -60,6 +65,14 @@ class SimonGameVM(
 
   fun getButtonBacklightStatus(): MutableState<Boolean> {
     return isButtonBacklightEnabledSaved
+  }
+
+  fun getSoundListName(): MutableState<String?> {
+    return soundListSaved
+  }
+
+  fun getSoundListArray(): Array<Sounds> {
+    return soundList
   }
 
   fun setSoundEnabledStatus(newStatus: Boolean) {
@@ -80,16 +93,22 @@ class SimonGameVM(
       .putBoolean("button_backlight", newStatus).apply()
   }
 
+  fun setSoundList(newList: String) {
+    soundListSaved.value = newList
+    context.getSharedPreferences("sound_list_tag", Context.MODE_PRIVATE).edit()
+      .putString("sound_list_tag", newList).apply()
+  }
+
   fun startGame(buttonText: String) {
     playerSequence.clear()
-    if (level.value == 1) sequence.clear()
     if (buttonText != "Repeat") {
-      val sound = sounds[(Math.random() * 4).toInt()]
+      if (level.value == 1) sequence.clear()
+      val sound = soundList[(Math.random() * 4).toInt()]
       sequence.add(sound)
     }
     for (i in 0 until level.value) {
-      playSound(sequence[i].second, i.toLong() * soundDelaySaved.value)
-      Log.d("MyLog", "soundName: ${sequence[i].first}")
+      playSound(sequence[i].soundId, i.toLong() * soundDelaySaved.value)
+      Log.d("MyLog", "soundName: ${sequence[i].soundName}")
     }
     Log.d("MyLog", "========================")
   }
@@ -100,17 +119,10 @@ class SimonGameVM(
     level.value = 1
   }
 
-  fun addPlayerSequence(soundName: String) {
-    val soundId = when (soundName) {
-      "sound_1" -> Pair(soundName, R.raw.sound_1)
-      "sound_2" -> Pair(soundName, R.raw.sound_2)
-      "sound_3" -> Pair(soundName, R.raw.sound_3)
-      "sound_4" -> Pair(soundName, R.raw.sound_4)
-      else -> Pair(soundName, R.raw.sound_1)
-    }
-    playSound(soundId.second, 0)
+  fun addPlayerSequence(sound: Sounds) {
+    playSound(sound.soundId, 0)
     if (gameMode == GameMode.DEFAULTGAME) {
-      playerSequence.add(soundId)
+      playerSequence.add(sound)
       checkResult()
     }
   }
