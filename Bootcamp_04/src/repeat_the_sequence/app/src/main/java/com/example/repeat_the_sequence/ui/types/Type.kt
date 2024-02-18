@@ -1,4 +1,4 @@
-package com.example.repeat_the_sequence.ui.theme
+package com.example.repeat_the_sequence.ui.types
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
@@ -10,9 +10,7 @@ import com.example.repeat_the_sequence.R
 
 val Typography = Typography(
   body1 = TextStyle(
-    fontFamily = FontFamily.Default,
-    fontWeight = FontWeight.Normal,
-    fontSize = 16.sp
+    fontFamily = FontFamily.Default, fontWeight = FontWeight.Normal, fontSize = 16.sp
   )
 )
 

@@ -1,4 +1,4 @@
-package com.example.repeat_the_sequence.ui.elements
+package com.example.repeat_the_sequence.ui.components.information
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -12,10 +12,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.repeat_the_sequence.R
-import com.example.repeat_the_sequence.ui.theme.stardewValleyFont
+import com.example.repeat_the_sequence.ui.types.stardewValleyFont
+import com.example.repeat_the_sequence.viewmodel.SimonGameVM
 
 @Composable
-fun LoseInfo(lvl: Int, record: Int) {
+fun LoseInfo(vm: SimonGameVM) {
   @Composable
   fun LoseTitle() {
     @Composable
@@ -57,15 +58,14 @@ fun LoseInfo(lvl: Int, record: Int) {
     }
   }
 
+  val resultText = if (vm.record.value > vm.savedRecord) "New record" else "Record"
   Box(
     Modifier
       .width(272.dp)
       .height(272.dp)
   ) {
     Image(
-      painterResource(R.drawable.lose_window),
-      "lose_window",
-      Modifier.fillMaxSize()
+      painterResource(R.drawable.lose_window), "lose_window", Modifier.fillMaxSize()
     )
     Column(
       Modifier
@@ -73,8 +73,8 @@ fun LoseInfo(lvl: Int, record: Int) {
         .padding(10.dp)
     ) {
       LoseTitle()
-      GameResult("Result: $lvl")
-      GameResult("Record: $record")
+      GameResult("Result: ${vm.level.value}")
+      GameResult("$resultText: ${vm.record.value}")
     }
   }
 }
