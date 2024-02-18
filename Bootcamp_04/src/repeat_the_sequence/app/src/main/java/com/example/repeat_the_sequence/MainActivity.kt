@@ -1,37 +1,26 @@
 package com.example.repeat_the_sequence
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.repeat_the_sequence.enums.Screen
-import com.example.repeat_the_sequence.ui.sreens.Game
-import com.example.repeat_the_sequence.ui.sreens.MenuScreen
-import com.example.repeat_the_sequence.ui.theme.BackgroundImage
+import com.example.repeat_the_sequence.enums.AppScreens
+import com.example.repeat_the_sequence.nav.MyNavHost
+import com.example.repeat_the_sequence.ui.components.images.BackgroundImage
+import com.example.repeat_the_sequence.viewmodel.SimonGameVM
 
 class MainActivity : ComponentActivity() {
+  @SuppressLint("SourceLockedOrientationActivity")
   override fun onCreate(savedInstanceState: Bundle?) {
+    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     super.onCreate(savedInstanceState)
     setContent {
       BackgroundImage()
       val navController = rememberNavController()
-      val game = Game(this@MainActivity, navController)
-      NavHost(navController = navController, startDestination = Screen.MENU.name) {
-        composable(Screen.MENU.name) {
-          MenuScreen(navController)
-        }
-        composable(Screen.GAME.name) {
-          game.RenderGameScreen(isFreeGame = false)
-        }
-        composable(Screen.FREEGAME.name) {
-          game.RenderGameScreen(isFreeGame = true)
-        }
-        composable(Screen.LOSE.name) {
-          game.RenderLoseScreen()
-        }
-      }
+      val vm = SimonGameVM(navController, this@MainActivity)
+      MyNavHost(navController, AppScreens.MENU.route, vm)
     }
   }
 }
