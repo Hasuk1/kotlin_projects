@@ -29,7 +29,7 @@ fun SoundDelaySlider(info: String, vm: SimonGameVM) {
     modifier = Modifier
       .padding(5.dp)
       .width(350.dp)
-      .height(90.dp)
+      .height(70.dp)
   ) {
     Image(
       painter = painterResource(id = R.drawable.game_info),

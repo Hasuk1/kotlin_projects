@@ -16,13 +16,12 @@ import com.example.repeat_the_sequence.viewmodel.SimonGameVM
 
 @Composable
 fun GameSettingsScreen(vm: SimonGameVM) {
-  BackgroundImage()
   Row(
     modifier = Modifier
       .padding(10.dp)
       .fillMaxWidth()
   ) {
-    BackArrowButton(description = "test") {
+    BackArrowButton(description = "back_to_menu") {
       vm.getNavController().navigate(AppScreens.MENU.route) {
         popUpTo(AppScreens.SETTINGS.route) { inclusive = true }
         vm.endGame()

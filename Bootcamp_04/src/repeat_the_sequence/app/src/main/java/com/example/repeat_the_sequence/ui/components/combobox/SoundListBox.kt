@@ -15,12 +15,12 @@ import com.example.repeat_the_sequence.R
 import com.example.repeat_the_sequence.ui.types.stardewValleyFont
 
 @Composable
-fun SoundListBox(info: String) {
+fun SoundListBox(info: String = "") {
   Box(
     modifier = Modifier
       .padding(5.dp)
       .width(350.dp)
-      .height(155.dp)
+      .height(160.dp)
   ) {
     Image(
       painter = painterResource(id = R.drawable.combo_box),

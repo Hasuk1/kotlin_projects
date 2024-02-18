@@ -6,10 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.repeat_the_sequence.enums.AppScreens
 import com.example.repeat_the_sequence.enums.GameMode
-import com.example.repeat_the_sequence.ui.screens.GameScreen
-import com.example.repeat_the_sequence.ui.screens.GameSettingsScreen
-import com.example.repeat_the_sequence.ui.screens.LoseScreen
-import com.example.repeat_the_sequence.ui.screens.MenuScreen
+import com.example.repeat_the_sequence.ui.screens.*
 import com.example.repeat_the_sequence.viewmodel.SimonGameVM
 
 @Composable
@@ -32,8 +29,8 @@ fun MyNavHost(navController: NavHostController, startRoute: String, vm: SimonGam
     composable(AppScreens.SETTINGS.route) {
       GameSettingsScreen(vm)
     }
-//    composable(AppScreens.ABOUT.route) {
-//      AboutAppScreen()
-//    }
+    composable(AppScreens.ABOUT.route) {
+      AboutAppScreen(vm)
+    }
   }
 }
