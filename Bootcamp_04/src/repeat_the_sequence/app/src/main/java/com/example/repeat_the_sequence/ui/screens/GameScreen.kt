@@ -29,6 +29,8 @@ fun GameScreen(viewModel: SimonGameVM) {
   val isSoundButtonBlocked = remember { mutableStateOf(viewModel.gameMode == GameMode.DEFAULTGAME) }
   val coroutineScope = rememberCoroutineScope()
 
+  val soundList = viewModel.getSoundListArray()
+
   Column(
     Modifier
       .fillMaxSize()
@@ -58,19 +60,19 @@ fun GameScreen(viewModel: SimonGameVM) {
     }
     GameInvitation(lvl, invitation, playButtonText, isSoundButtonBlocked)
     Row {
-      SquareButton("\uD83D\uDC37", isSoundButtonBlocked, viewModel.getButtonBacklightStatus()) {
-        viewModel.addPlayerSequence("sound_1")
+      SquareButton(soundList[0], isSoundButtonBlocked, viewModel.getButtonBacklightStatus()) {
+        viewModel.addPlayerSequence(soundList[0])
       }
-      SquareButton("\uD83D\uDC38", isSoundButtonBlocked, viewModel.getButtonBacklightStatus()) {
-        viewModel.addPlayerSequence("sound_2")
+      SquareButton(soundList[1], isSoundButtonBlocked, viewModel.getButtonBacklightStatus()) {
+        viewModel.addPlayerSequence(soundList[1])
       }
     }
     Row {
-      SquareButton("\uD83D\uDC3B", isSoundButtonBlocked, viewModel.getButtonBacklightStatus()) {
-        viewModel.addPlayerSequence("sound_3")
+      SquareButton(soundList[2], isSoundButtonBlocked, viewModel.getButtonBacklightStatus()) {
+        viewModel.addPlayerSequence(soundList[2])
       }
-      SquareButton("\uD83D\uDC2E", isSoundButtonBlocked, viewModel.getButtonBacklightStatus()) {
-        viewModel.addPlayerSequence("sound_4")
+      SquareButton(soundList[3], isSoundButtonBlocked, viewModel.getButtonBacklightStatus()) {
+        viewModel.addPlayerSequence(soundList[3])
       }
     }
     Spacer(modifier = Modifier.weight(1f))

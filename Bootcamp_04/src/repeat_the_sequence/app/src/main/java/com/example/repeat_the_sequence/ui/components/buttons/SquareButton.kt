@@ -16,16 +16,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.repeat_the_sequence.R
+import com.example.repeat_the_sequence.enums.Sounds
 
 @Composable
 fun SquareButton(
-  emoji: String,
+  buttonOfSound: Sounds,
   isBlocked: MutableState<Boolean>,
   isBacklightEnabled: MutableState<Boolean>,
   onClick: () -> Unit
 ) {
   val blockedColorFilter = ColorFilter.lighting(Color.DarkGray, Color.DarkGray)
-
   val myColorFilter = if (isBlocked.value) blockedColorFilter else null
 
   val myModifier = if (isBacklightEnabled.value) {
@@ -51,12 +51,12 @@ fun SquareButton(
   Box(modifier = myModifier) {
     Image(
       painter = painterResource(id = R.drawable.game_button),
-      contentDescription = "${emoji}_button",
+      contentDescription = "${buttonOfSound.soundName}_button",
       modifier = Modifier.fillMaxSize(),
       colorFilter = myColorFilter
     )
     Text(
-      text = emoji, fontSize = 35.sp, modifier = Modifier.align(Alignment.Center)
+      text = buttonOfSound.emoji, fontSize = 35.sp, modifier = Modifier.align(Alignment.Center)
     )
   }
 }
