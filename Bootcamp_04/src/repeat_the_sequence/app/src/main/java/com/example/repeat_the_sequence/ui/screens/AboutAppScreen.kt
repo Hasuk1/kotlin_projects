@@ -42,7 +42,7 @@ fun AboutAppScreen(vm: SimonGameVM) {
       isSoundEnable = vm.getSoundEnabledStatus().value,
       isButtonBacklightEnabled = vm.getButtonBacklightStatus().value,
       soundDelay = vm.getSoundDelaySec().value,
-      soundTheme = "Animal"
+      soundTheme = vm.getSoundListName().value!!
     )
     CopyrightCard("Hasuk1")
   }
