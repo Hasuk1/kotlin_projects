@@ -55,4 +55,4 @@ Create a logger module
 - The Smart Calculator now is a very-easy-to-extend application. Decide with you team, what functionality do you want to add next and write a new module/a couple of modules
 - New modules can be of different types: a new feature, a new module with core functionality
 
-💡 [Tap here](https://docs.google.com/forms/d/e/1FAIpQLSeuGXhSvF8aA8PBnEUx04iyh0gcnZaqPODXilAatmDK5C2sGA/viewform) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
+💡 [Tap here](https://docs.google.com/forms/d/e/1FAIpQLSeuGXhSvF8aA8PBnEUx04iyh0gcnZaqPODXilAatmDK5C2sGA/viewform) **to leave your feedback on the project**. Product Team really tries to make your educational experience better.
