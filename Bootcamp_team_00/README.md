@@ -36,7 +36,7 @@ In the Day00 project, we wrote some features for the Smart Calculator project. N
 
 **Advice!** Read the official documentation about declaration of modules in Gradle (e.g. using `include` in the root settings.gradle)
 
-### Exercise 2. Develop core modules
+## Exercise 2. Develop core modules
 Create a logger module
 - It should be a small lightweight module, that contains class/classes with logic for logging
 - The easy-to-implement way is to create a Kotlin `object`, that will be an abstraction layer over the standard `Log` class methods. The idea is to hide the concrete realisation (it can be `Log` or `Timber` or whatever) behind the facade of your own methods, so if we want to change concrete realisation, we have no need to change it in the bunch of our project modules. Also, in our facade we can declare some methods and constants specific for our app (e.g. default logging TAG or some enhanced exception info logging)
