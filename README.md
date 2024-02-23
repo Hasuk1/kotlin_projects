@@ -5,8 +5,13 @@
 ## **Contents**
 
 1. [Projects](#project)
+   1.1 [1. S21 Bootcamp](#s21_bootcamp)
+   
+   1.2 [2. Google Bootcamp](#google_bootcamp)
+   
+   1.3 [3. Tinkoff Bootcamp](#tinkoff_bootcamp)
 
-2. [Useful combinations in IntelliJ IDEA](#useful-combinations-in-intellij-idea)
+3. [Useful combinations in IntelliJ IDEA](#useful-combinations-in-intellij-idea)
 
     2.0 [0. The universal combination for all problems](#0-the-universal-combination-for-all-problems)
 
@@ -16,35 +21,46 @@
 
     2.3 [3. Other](#3-other)
 
-3. [How to run kotlin code](#how-to-run-kotlin-code)
+4. [How to run kotlin code](#how-to-run-kotlin-code)
 
-4. [Install gradle to other dir](#change-gradle-home-dir)
+5. [Install gradle to other dir](#change-gradle-home-dir)
 
 ## **Projects**
 
+### **S21 Bootcamp**
+
 |**Project**| **Status**| **Stack** | **Description** |
 | ------ | ------ | ------ | ------ |
-| `Day00` [Bootcamp_00](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_00)|6/6| Kotlin/Gradle/IntelliJ IDEA | Functional programming |
-| `Day01` [Bootcamp_01](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_01)|3/3| Kotlin/Gradle/IntelliJ IDEA | Object-oriented programming |
-| `Day02` [Bootcamp_02](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_02)|3/3| Kotlin/Gradle/IntelliJ IDEA | Collections/JSON |
-| `Day03` [Bootcamp_03](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/Bootcamp_03)|4/5|  Kotlin/Gradle/IntelliJ IDEA | Generics/Delegates/Functional types |
-| `Day04` [Bootcamp_04](https://github.com/Hasuk1/Repeat-The-Sequence)|6/6| Kotlin/Gradle/Android studio/Jetpack compose | Simons Says Game |
-| `Day05` [Bootcamp_05]()|Waiting to start| - | - |
-| `Day06` [Bootcamp_06]()|Waiting to start| - | - |
-| `Day07` [Bootcamp_07]()|Waiting to start| - | - |
-| `Day08` [Bootcamp_08]()|Waiting to start| - | - |
-| `Day09` [Bootcamp_09]()|Waiting to start| - | - |
-| `Day10` [Bootcamp_10]()|Waiting to start| - | - |
-| `Day11` [Bootcamp_11]()|Waiting to start| - | - |
-| `Day12` [Bootcamp_12]()|Waiting to start| - | - |
-| `Day13` [Bootcamp_13]()|Waiting to start| - | - |
-| `Day14` [Bootcamp_14]()|Waiting to start| - | - |
-| `Day15` [Bootcamp_15]()|Waiting to start| - | - |
-| `Kotlin01` [Project_01]()|Waiting to start| - | - |
-| `Kotlin02` [Project_02]()|Waiting to start| - | - |
-| `Kotlin03` [Project_03]()|Waiting to start| - | - |
-| `Kotlin04` [Project_04]()|Waiting to start| - | - |
-| `Kotlin05` [Project_05]()|Waiting to start| - | - |
+| `Day00` [Bootcamp_00](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/01_day_00)|6/6| Kotlin/Gradle/IntelliJ IDEA | Functional programming |
+| `Day01` [Bootcamp_01](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/02_day_01)|3/3| Kotlin/Gradle/IntelliJ IDEA | Object-oriented programming |
+| `Day02` [Bootcamp_02](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/03_day_02)|3/3| Kotlin/Gradle/IntelliJ IDEA | Collections/JSON |
+| `Day03` [Bootcamp_03](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/04_day_03)|4/5|  Kotlin/Gradle/IntelliJ IDEA | Generics/Delegates/Functional types |
+| `Day04` [Bootcamp_04](https://github.com/Hasuk1/Repeat-The-Sequence)|6/6| Kotlin/Gradle/Android studio/Jetpack compose | Simons Says Game (MVVM/Navigate/...)|
+| `Team00` [Bootcamp_05](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/06_team_00)|In progress| Kotlin/Gradle/Android studio/Jetpack compose | Modules/Clean architecture |
+| `Day05` [Bootcamp_06]()|Waiting to start| - | - |
+| `Day06` [Bootcamp_07]()|Waiting to start| - | - |
+| `Day07` [Bootcamp_08]()|Waiting to start| - | - |
+| `Day08` [Bootcamp_09]()|Waiting to start| - | - |
+| `Day09` [Bootcamp_10]()|Waiting to start| - | - |
+| `Team01` [Bootcamp_11]()|Waiting to start| - | - |
+
+### **Google Bootcamp**
+|**Project**| **Status**| **Stack** | **Description** |
+| ------ | ------ | ------ | ------ |
+| `01` [Layouts, theming, and animation](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/google_course/layouts_theming_and_animation)|In progress| ... | ... |
+| `02` [...]()|...| ... | ... |
+| `03` [...]()|...| ... | ... |
+| `04` [...]()|...| ... | ... |
+| `05` [...]()|...| ... | ... |
+
+### **Tinkoff Bootcamp**
+|**Project**| **Status**| **Stack** | **Description** |
+| ------ | ------ | ------ | ------ |
+| `01` [Algorithm and data structure](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/algos_and_structs)|...| ... | ... |
+| `02` [...]()|...| ... | ... |
+| `03` [...]()|...| ... | ... |
+| `04` [...]()|...| ... | ... |
+| `05` [...]()|...| ... | ... |
 
 ## **Useful combinations in IntelliJ IDEA**
 Keymap:
