@@ -152,5 +152,6 @@ export GRADLE_USER_HOME=/other/dir
 source ~/.zshrc
 ```
 Preferences..->Appearance & Behavior->Path Variables [+]GRADLE_USER_HONE - Value(/other/dir)
+gradle.properties->org.gradle.user.home=/Users/perlabru/goinfre/.gradle
 
 ###### /opt/goinfre/perlabru/.gradle
