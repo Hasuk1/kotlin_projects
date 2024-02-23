@@ -5,12 +5,14 @@
 ## **Contents**
 
 1. [Projects](#projects)
+
+   1.1 [Pet projects](#pet-projects)
    
-   1.1 [S21 Bootcamp](#s21-bootcamp)
+   1.2 [S21 Bootcamp](#s21-bootcamp)
    
-   1.2 [Google Bootcamp](#google-bootcamp)
+   1.3 [Google Bootcamp](#google-bootcamp)
    
-   1.3 [Tinkoff Bootcamp](#tinkoff-bootcamp)
+   1.4 [Tinkoff Bootcamp](#tinkoff-bootcamp)
 
 3. [Useful combinations in IntelliJ IDEA](#useful-combinations-in-intellij-idea)
 
@@ -27,6 +29,15 @@
 5. [Install gradle to other dir](#change-gradle-home-dir)
 
 ## **Projects**
+
+### **Pet projects**
+
+|**Project**| **Stack** | **Description** |
+| ------ | ------ | ------ | ------ |
+| `01` [Popular films](https://github.com/Hasuk1/Karpushov)|| Kotlin/Gradle/Retrofit2/Android studio/Jetpack compose | An app with api kinopoisk, for watching popular movies |
+| `02` [Simon Says Game](https://github.com/Hasuk1/Repeat-The-Sequence)| Kotlin/Gradle/Android studio/Jetpack compose | It's a game similar to Simon Says. |
+| `03` [...]()| ... | ... |
+| `04` [...]()| ... | ... |
 
 ### **S21 Bootcamp**
 
