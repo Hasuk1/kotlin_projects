@@ -4,22 +4,23 @@
 
 ## **Contents**
 
-1. [Projects](#project)
-   1.1 [1. S21 Bootcamp](#s21_bootcamp)
+1. [Projects](#projects)
    
-   1.2 [2. Google Bootcamp](#google_bootcamp)
+   1.1 [S21 Bootcamp](#s21-bootcamp)
    
-   1.3 [3. Tinkoff Bootcamp](#tinkoff_bootcamp)
+   1.2 [Google Bootcamp](#google-bootcamp)
+   
+   1.3 [Tinkoff Bootcamp](#tinkoff-bootcamp)
 
 3. [Useful combinations in IntelliJ IDEA](#useful-combinations-in-intellij-idea)
 
-    2.0 [0. The universal combination for all problems](#0-the-universal-combination-for-all-problems)
+    2.1 [The universal combination for all problems](#the-universal-combination-for-all-problems)
 
-    2.1 [1. Code navigation](#1-code-navigation)
+    2.2 [Code navigation](#code-navigation)
 
-    2.2 [2. Refactoring/editing/code generation](#2-refactoringeditingcode-generation)
+    2.3 [Refactoring/editing/code generation](#refactoringeditingcode-generation)
 
-    2.3 [3. Other](#3-other)
+    2.4 [Other](#other)
 
 4. [How to run kotlin code](#how-to-run-kotlin-code)
 
@@ -73,12 +74,12 @@ Keymap:
 
 `⇧ - Shift`
 
-### **0. The universal combination for all problems**
+### **The universal combination for all problems**
 |**Mac OS**|**Windows**|**Description**|**Описание**|
 |---|---|---|---|
 |⌥ + Enterl|Alt + Enter|show quick actions, fix the code|показать быстрые действия, исправить код|
 
-### **1. Code navigation**
+### **Code navigation**
 |**Mac OS**|**Windows**|**Description**|**Описание**|
 |---|---|---|---|
 |⌘ + O|Ctrl + N|open class|открыть класс|
@@ -90,7 +91,7 @@ Keymap:
 |⌘ + ⇧ + E|Ctrl + Shift + E|recent edits|последние редактированные файлы|
 |⌘ + F12|Ctrl + F12|list of methods of the current class|start typing the name of the method to filter|список методов текущего класса|начать набирать имя метода для фильтрации|
 
-### **2. Refactoring/editing/code generation**
+### **Refactoring/editing/code generation**
 |**Mac OS**|**Windows**|**Description**|**Описание**|
 |---|---|---|---|
 |⌃ + ⌥ + O|Ctrl + Alt + O|optimize the import section|оптимизировать раздел import|
@@ -106,7 +107,7 @@ Keymap:
 |⌘ + ⇧ + 8|Shift + Alt + Insert|switch editing mode (normal/column)|переключить режим редактирования (обычный/колонка)|
 |⌥ + ⌥(зажать) + Up/Down|Ctrl + Ctrl(зажать) + Up/Down|highlight the next/previous row in column mode|выделить следующую/предыдущую строку в режиме колонки|
 
-### **3. Other**
+### **Other**
 |**Mac OS**|**Windows**|**Description**|**Описание**|
 |---|---|---|---|
 |⌃ + R/D|Shift + F10/F9|run/debug the currently selected configuration|запуск/дебаг текущей выбранной конфигурации|
