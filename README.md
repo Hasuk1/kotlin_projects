@@ -43,12 +43,12 @@
 
 |**Project**| **Status**| **Stack** | **Description** |
 | ------ | ------ | ------ | ------ |
-| `Day00` [Bootcamp_00](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/01_day_00)|6/6| Kotlin/Gradle/IntelliJ IDEA | Functional programming |
-| `Day01` [Bootcamp_01](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/02_day_01)|3/3| Kotlin/Gradle/IntelliJ IDEA | Object-oriented programming |
-| `Day02` [Bootcamp_02](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/03_day_02)|3/3| Kotlin/Gradle/IntelliJ IDEA | Collections/JSON |
-| `Day03` [Bootcamp_03](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/04_day_03)|4/5|  Kotlin/Gradle/IntelliJ IDEA | Generics/Delegates/Functional types |
+| `Day00` [Bootcamp_00](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/01_day_00)|6/6| Kotlin/Gradle/IntelliJ IDEA | Functional programming |
+| `Day01` [Bootcamp_01](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/02_day_01)|3/3| Kotlin/Gradle/IntelliJ IDEA | Object-oriented programming |
+| `Day02` [Bootcamp_02](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/03_day_02)|3/3| Kotlin/Gradle/IntelliJ IDEA | Collections/JSON |
+| `Day03` [Bootcamp_03](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/04_day_03)|4/5|  Kotlin/Gradle/IntelliJ IDEA | Generics/Delegates/Functional types |
 | `Day04` [Bootcamp_04](https://github.com/Hasuk1/Repeat-The-Sequence)|6/6| Kotlin/Gradle/Android studio/Jetpack compose | Simons Says Game (MVVM/Navigate/...)|
-| `Team00` [Bootcamp_05](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/s21_bootcamp/06_team_00)|In progress| Kotlin/Gradle/Android studio/Jetpack compose | Modules/Clean architecture |
+| `Team00` [Bootcamp_05](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/06_team_00)|In progress| Kotlin/Gradle/Android studio/Jetpack compose | Modules/Clean architecture |
 | `Day05` [Bootcamp_06]()|Waiting to start| - | - |
 | `Day06` [Bootcamp_07]()|Waiting to start| - | - |
 | `Day07` [Bootcamp_08]()|Waiting to start| - | - |
@@ -59,7 +59,7 @@
 ### **Google Bootcamp**
 |**Project**| **Status**| **Stack** | **Description** |
 | ------ | ------ | ------ | ------ |
-| `01` [Layouts, theming, and animation](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/google_course/layouts_theming_and_animation)|In progress| ... | ... |
+| `01` [Layouts, theming, and animation](https://github.com/Hasuk1/kotlin_projects/tree/main/google_course/layouts_theming_and_animation)|In progress| ... | ... |
 | `02` [...]()|...| ... | ... |
 | `03` [...]()|...| ... | ... |
 | `04` [...]()|...| ... | ... |
@@ -68,7 +68,7 @@
 ### **Tinkoff Bootcamp**
 |**Project**| **Status**| **Stack** | **Description** |
 | ------ | ------ | ------ | ------ |
-| `01` [Algorithm and data structure](https://github.com/Hasuk1/Kotlin_bootcamp/tree/main/algos_and_structs)|...| ... | ... |
+| `01` [Algorithm and data structure](https://github.com/Hasuk1/kotlin_projects/tree/main/algos_and_structs)|...| ... | ... |
 | `02` [...]()|...| ... | ... |
 | `03` [...]()|...| ... | ... |
 | `04` [...]()|...| ... | ... |
