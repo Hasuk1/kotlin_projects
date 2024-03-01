@@ -48,8 +48,8 @@
 | `Day02` [Bootcamp_02](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/03_day_02)|3/3| Kotlin/Gradle/IntelliJ IDEA | Collections/JSON |
 | `Day03` [Bootcamp_03](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/04_day_03)|4/5|  Kotlin/Gradle/IntelliJ IDEA | Generics/Delegates/Functional types |
 | `Day04` [Bootcamp_04](https://github.com/Hasuk1/Repeat-The-Sequence)|6/6| Kotlin/Gradle/Android studio/Jetpack compose | Simons Says Game (MVVM/Navigate/...)|
-| `Team00` [Bootcamp_05](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/06_team_00)|In progress| Kotlin/Gradle/Android studio/Jetpack compose | Modules/Clean architecture |
-| `Day05` [Bootcamp_06]()|Waiting to start| - | - |
+| `Team00` [Bootcamp_05](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/06_team_00)|4/4| Kotlin/Gradle/Android studio/Jetpack compose | Modules/Clean architecture |
+| `Day05` [Bootcamp_06](https://github.com/Hasuk1/kotlin_projects/tree/main/s21_bootcamp/07_day_05)|In progress| Kotlin/Gradle/Android studio/Jetpack compose | coroutines |
 | `Day06` [Bootcamp_07]()|Waiting to start| - | - |
 | `Day07` [Bootcamp_08]()|Waiting to start| - | - |
 | `Day08` [Bootcamp_09]()|Waiting to start| - | - |
