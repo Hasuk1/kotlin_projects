@@ -34,9 +34,9 @@
 
 |**Project**| **Stack** | **Description** |
 | ------ | ------ | ------ |
-| `01` [Popular films](https://github.com/Hasuk1/Top-films)| Kotlin/Gradle/Retrofit2/Android studio/Jetpack compose | An app with api kinopoisk, for watching popular movies |
+| `01` [Popular films](https://github.com/Hasuk1/Top-films)| Kotlin/Gradle/Retrofit2/Android studio/Jetpack compose | An app with api kinopoisk, for watching popular movies. |
 | `02` [Simon Says Game](https://github.com/Hasuk1/Repeat-The-Sequence)| Kotlin/Gradle/Android studio/Jetpack compose | It's a game similar to Simon Says. |
-| `03` [...]()| ... | ... |
+| `03` [Products online shop](https://github.com/Hasuk1/dummyjson_products)| Kotlin/Compose/Hilt/Coil/Retrofit2 | An app with dummy api, for viewing products. |
 | `04` [...]()| ... | ... |
 
 ### **S21 Bootcamp**
