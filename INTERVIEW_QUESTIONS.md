@@ -80,12 +80,66 @@
 
 7. [Java Core](#java-core)
 
+    7.33 [Зачем используют ключевые слова final, finally и finalize?](#33-зачем-используют-ключевые-слова-final-finally-и-finalize)
+
 8. [RxJava](#rxjava)
 
 9. [Android SDK](#android-sdk)
 
-10. [Kotlin](#kotlin)
+    9.54 [Какие базовые Android-компоненты можете назвать?](#54-какие-базовые-android-компоненты-можете-назвать)
 
+    9.58 [Для чего используют механизм фрагментов?](#58-для-чего-используют-механизм-фрагментов)
+    
+    9.59 [Опишите жизненный цикл Activity.](#59-опишите-жизненный-цикл-activity)
+    
+    9.60 [Опишите жизненный цикл Fragment.](#60-опишите-жизненный-цикл-fragment)
+    
+    9.61 [Есть ли у Fragment контекст? Если да, то как его получить?](#61-есть-ли-у-fragment-контекст-если-да-то-как-его-получить)
+    
+    9.63 [Что такое изменение конфигурации? Что происходит с приложением на Android при этом?](#63-что-такое-изменение-конфигурации-что-происходит-с-приложением-на-android-при-этом)
+    
+    9.64 [Что такое Intent? Что такое explicit/implicit Intent?](#64-что-такое-intent-что-такое-explicitimplicit-intent)
+    
+    9.65 [Что такое SharedPreferences?](#65-что-такое-sharedpreferences)
+    
+    9.66 [Что такое ANR? Как избегать таких ситуаций?](#66-что-такое-anr-как-избегать-таких-ситуаций)
+    
+    9.67 [Что такое DataBinding?](#67-что-такое-databinding)
+    
+    9.68 [Что такое LiveData? Какие виды знаете?](#68-что-такое-livedata-какие-виды-знаете)
+    
+    9.69 [Как создать ViewModel? Почему создавать ViewModel нужно именно так?](#69-как-создать-viewmodel-почему-создавать-viewmodel-нужно-именно-так)    
+    
+    9.70 [Что такое Context и зачем он?](#70-что-такое-context-и-зачем-он)    
+    
+    9.71 [Что такое AndroidManifest.xml? Зачем его используют? Что мы можем там декларировать?](#71-что-такое-androidmanifestxml-зачем-его-используют-что-мы-можем-там-декларировать)    
+    
+10. [Kotlin](#kotlin)
+    
+    10.82 [Как задекларировать getter/setter для property?](#82-как-задекларировать-gettersetter-для-property)
+    
+    10.83 [Почему классы Kotlin по умолчанию final?](#83-почему-классы-kotlin-по-умолчанию-final)
+        
+    10.90 [Как работают примитивы в Kotlin?](#90-как-работают-примитивы-в-kotlin)
+    
+    10.91 [Расскажите об объекте Unit в Kotlin.](#91-расскажите-об-объекте-unit-в-kotlin)
+        
+    10.93 [Как создать Singleton объект в Kotlin?](#93-как-создать-singleton-объект-в-kotlin)
+    
+    10.94 [Что такое companion object?](#94-что-такое-companion-object)
+    
+    10.95 [Чем отличается const val от val?](#95-чем-отличается-const-val-от-val)
+    
+    10.96 [Какие знаете модификаторы доступа?](#96-какие-знаете-модификаторы-доступа)
+        
+    10.100 [Что такое suspend-функция?](#100-что-такое-suspend-функция)
+    
+    10.101 [Что такое Job?](#101-что-такое-job)
+    
+    10.102 [Что такое Dispatcher? Какие есть виды?](#102-что-такое-dispatcher-какие-есть-виды)
+    
+    10.103 [Что такое Scope?](#103-что-такое-scope)
+    
 11. [Другое](#другое)
 
 12. [Практические задачи](#практические-задачи)
@@ -127,7 +181,23 @@
         <UL>
             <LI><b>Объект</b> - это экземпляр класса, который имеет все теже поля и методы, но значения в разных объектха могут различаться. </LI>
         </UL>
-        <LI><b>Интерфейс</b> изначально это шаблон проектирования. В Kotlin - это некое соглашение для класса, который будет использовать (наследоваться) интерфейс, которое обязывает последнего реализовать заключенный с интерфейсом контракт(методы/поля).</LI>
+        <LI><b>Интерфейс</b> изначально это шаблон проектирования. В Kotlin - это некое соглашение для класса, который будет использовать (наследоваться) интерфейс, которое обязывает последнего реализовать заключенный с интерфейсом контракт(методы/поля).
+<pre><code><span style="color:orange;">interface</span> Movable{
+    <span style="color:orange;">var</span> <span style="color:MediumOrchid;">speed</span>: Int  <span style="color:gray;">// объявление свойства</span>
+    <span style="color:orange;">fun</span> move</span>()      // определение функции без реализации</span>
+    <span style="color:orange;">fun</span> stop(){     // определение функции с реализацией по умолчанию</span>
+        println("Остановка"</span>)
+    }
+}
+<span style="color:orange;">class</span> Car : Movable{
+    <span style="color:gray;">// обязательно реализовать(override) только то,
+    <span style="color:gray;">// что в interface не имеет реализации по умолчанию</span>
+    <span style="color:orange;">override var</span> <span style="color:MediumOrchid;">speed</span> = 60</span>
+    <span style="color:orange;">override fun</span> <span style="color:DodgerBlue;">move</span>(){
+        println(<span style="color:green;">"Машина едет со скоростью $speed км/ч"</span>)
+    }
+}</pre></code>        
+        </LI>
         <LI><b>Отличия</b>
         <UL>
             <LI><b>interface</b> под оберткой представляет из себя abstract class, который запрещает создавать объекты этого класса.</LI>
@@ -135,25 +205,7 @@
         </UL>
         </LI>
     </UL>
-</details><br>
-
-```kotlin
-interface Movable{
-    var speed: Int  // объявление свойства
-    fun move()      // определение функции без реализации
-    fun stop(){     // определение функции с реализацией по умолчанию
-        println("Остановка")
-    }
-}
-class Car : Movable{
-    // обязательно реализовать(override) только то,
-    // что в interface не имеет реализации по умолчанию
-    override var speed = 60
-    override fun move(){
-        println("Машина едет со скоростью $speed км/ч")
-    }
-}
-```
+</details>
 
 ### **3. Назовите базовые типы данных.**
 
@@ -495,7 +547,7 @@ class Car : Movable{
 
 #### [Содержание<---](#содержание)
 
-### **Какие базовые Android-компоненты можете назвать?**
+### **54. Какие базовые Android-компоненты можете назвать?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
@@ -682,13 +734,6 @@ class Car : Movable{
 ### **75. Что такое DiffUtil?**
 
 ### **76. Расскажите о ConstraintLayout.**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **77. Для чего используют Group, Guideline, Barriers, Chains в ConstraintLayout?**
 
@@ -703,13 +748,14 @@ class Car : Movable{
 ### **81. Что такое nullable и non-nullable типы? Какая разница между val и var?**
 
 ### **82. Как задекларировать getter/setter для property?**
-```kotlin
-var myProperty: Int
-    get() = field * 2
-    set(value) {
-        field = value / 2
-    }
-```
+<details>
+  <summary><b>Answer</b></summary>
+    <pre><code><span style="color:orange;">var</span> myProperty: Int
+  <span style="color:orange;">get</span>() = field * 2
+  <span style="color:orange;">set</span>(value) {
+    field = value / 2
+  }</pre></code>
+</details>
 
 ### **83. Почему классы Kotlin по умолчанию final?**
 <details>
@@ -739,7 +785,6 @@ var myProperty: Int
         <LI>Kotlin автоматически выполняет упаковку (boxing) примитивных типов данных в объекты при необходимости их использования в контексте, где требуется объект. Если объект никогда не принимает значение null, Kotlin может использовать прямое представление примитивного типа данных без его обертки. Также существует явные функции преобразования между примитивными типами данных и их обертками.</LI>
     </UL>
 </details>
-
 
 ### **91. Расскажите об объекте Unit в Kotlin.**
 <details>
@@ -855,16 +900,13 @@ singleton.doSomething()</pre></code></UL></details>
     </UL>
 </details>
 
-### **102. Что такое Scope?**
+### **103. Что такое Scope?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
         <LI><b>Scope (область)</b>- это контекст выполнения для корутин. Scope определяет, когда корутина должна быть активной и когда она должна завершиться.<br><br>Корутины могут быть запущены в рамках определенной области, которая может быть ограничена временем жизни, потоком выполнения или другими факторами. Scope управляет жизненным циклом корутины, позволяя ей быть активной в течение определенного периода времени.</LI>
     </UL>
 </details>
-
-
-### **103. Как писать Java compatible API в Kotlin?**
 
 ## **Другое**
 
