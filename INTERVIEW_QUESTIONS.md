@@ -260,6 +260,7 @@ class Car : Movable{
         <LI><b>Файлы.</b></LI>
         <LI><b>SQLite</b> - легковесная реляционная база данных, встроенная в Android.Используется для хранения структурированных данных, таких как списки контактов, журналы и другие.</LI>
         <LI>Внешние службы хранения данных (Firebase Realtime Database, ...).</LI>
+        <LI>DataStore (Part of Android Jetpack)</LI>
     </UL>
 </details>
 
@@ -589,7 +590,14 @@ class Car : Movable{
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>SharedPreferences</b> - постоянное хранилище на платформе Android. Применяются для хранения конфигурации приложения. По своей сути представляет из себя XML-файл, где данные хранятся парами (ключ, занчение). Файл хранится в /data/shared_prefs.<br>Получить экземпляр SharedPreferences можно от Context.getSharedPreferences(name = "имя_файла_с_настройками", mode = Context.MODE_XXXX).</LI>
+        <UL>
+        <LI><b>MODE_PRIVATE</b> - доступ только у приложения владельца</LI>
+        <br>Остальные методы помечены как <b>deprecated</b>
+        <LI><b><i>MODE_WORLD_READABLE</i></b> - только чтение</LI>
+        <LI><b><i>MODE_WORLD_WRITEABLE</i></b> - только запись</LI>
+        <LI><b><i>MODE_MULTI_PROCESS</i></b> - доступ к файлу имеют несколько процессов</LI>
+        </UL>
     </UL>
 </details>
 
@@ -598,7 +606,7 @@ class Car : Movable{
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>ANR (Application Not Response)</b> - приложение не отвечает. Может возникнуть, если вызвать delay в main потоке и других случаях, когда следует использовать отличный поток от main thread.</LI>
     </UL>
 </details>
 
