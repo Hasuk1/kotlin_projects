@@ -624,7 +624,7 @@ class Car : Movable{
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>LiveData</b> - хранилище данных, работающее по принципу паттерна Observer (наблюдатель). В него можно поместить какой-либо объект и также на него можно подписаться и получать объекты, которые в него помещают.</LI>
     </UL>
 </details>
 
@@ -633,7 +633,10 @@ class Car : Movable{
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>Неправильно</b> - просто в val вызвать конструктор.</LI>
+        <LI><b>Правильно</b> - через ViewModelProvider</LI>
+        <br>
+        <LI>Чтобы жизненный цикл VM продолжался до полного закрытия приложения.</LI>
     </UL>
 </details>
 
@@ -642,7 +645,15 @@ class Car : Movable{
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>Context</b> – это объект, который предоставляет доступ к базовым функциям приложения: доступ к ресурсам, к файловой системе, вызов активности и т.д. </LI>
+        <LI>В свою очередь Context имеет свои методы, позволяющие получать доступ к ресурсам и другим объектам.</LI>
+        <UL>
+          <LI><code>getAssets()</code></LI>
+          <LI><code>getResources()</code></LI>
+          <LI><code>getPackageManager()</code></LI>
+          <LI><code>getString()</code></LI>
+          <LI><code>getSharedPrefsFile()</code></LI>
+        </UL>
     </UL>
 </details>
 
@@ -651,46 +662,24 @@ class Car : Movable{
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>AndroidManifest.xml</b> - обязательный файл для каждого приложения на платформе Android. Он содержит важную метаинформацию о приложении и необходим для правильной работы приложения на устройствах Android. Вот основные его функции:</LI>
+        <OL>
+        <LI><b>Описание приложения:</b> В файле AndroidManifest.xml содержится информация о приложении, такая как его название, версия, пакетное имя, иконка приложения и другие основные атрибуты.</LI>
+        <LI><b>Компоненты приложения:</b> Здесь декларируются все компоненты приложения, такие как активности (&lt;activity&gt;), службы (&lt;service&gt;), приемники широковещательных сообщений (&lt;receiver&gt;) и провайдеры контента (&lt;provider&gt;). Это позволяет системе Android знать о наличии и структуре компонентов приложения.</LI>
+        <LI><b>Разрешения:</b> В <code>AndroidManifest.xml</code> указываются разрешения, необходимые для доступа к различным системным ресурсам и функциям устройства, таким как доступ к интернету, камере, геолокации и другим. Это позволяет пользователям заранее знать, какие разрешения запрашивает приложение, и контролировать их предоставление.</LI>
+        <LI><b>Фильтры намерений (Intent filters):</b> С помощью элементов &lt;intent-filter&gt; можно указать, какие действия (intent) компонент приложения может обрабатывать. Например, здесь определяются активности, которые должны быть запущены при определенных действиях пользователя или системы, таких как открытие определенного типа файлов или ссылок.</LI>
+        <LI><b>Метаинформация:</b> В файле AndroidManifest.xml можно также задать дополнительную метаинформацию о приложении, такую как минимальная версия Android, необходимая для запуска приложения, описание, категории приложения и другие дополнительные атрибуты.</LI>
+        </OL>
     </UL>
 </details>
-
 
 ### **72. Перечислите layout, с которыми работали? Когда и какой нужно использовать?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **73. Расскажите, что нужно реализовать, чтобы отобразить список строк в RecyclerView.**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **74. Объясните паттерн ViewHolder. Для чего он применяется?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **75. Что такое DiffUtil?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **76. Расскажите о ConstraintLayout.**
 <details>
@@ -702,129 +691,52 @@ class Car : Movable{
 
 
 ### **77. Для чего используют Group, Guideline, Barriers, Chains в ConstraintLayout?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **78. У вас есть Activity с двумя Fragment'ами, у одного есть кнопка, у другого TextView. При нажатии кнопки изменяется TextView. Как вы реализуете это?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **79. Что такое WorkManager? Когда используем?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ## **Kotlin**
 
 ### **80. Как вы понимаете термин Null safety?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **81. Что такое nullable и non-nullable типы? Какая разница между val и var?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **82. Как задекларировать getter/setter для property?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
+```kotlin
+var myProperty: Int
+    get() = field * 2
+    set(value) {
+        field = value / 2
+    }
+```
 
 ### **83. Почему классы Kotlin по умолчанию final?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI>Часть философии безопасного программирования в Kotlin.</LI>
     </UL>
 </details>
 
 
 ### **84. Что такое sealed class?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **85. Что такое data classes?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **86. Какая разница между sealed class и enum?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **87. Почему у Kotlin нет checked exceptions?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
 
-
-### **88. Что такое Extensions? Использовали ли вы их на практике?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
+### **88. Что такое Extensions (расширение)? Использовали ли вы их на практике?**
 
 ### **89. Что такое перегрузка операторов (operator overloading)? Зачем нужен этот механизм?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **90. Как работают примитивы в Kotlin?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI>Kotlin автоматически выполняет упаковку (boxing) примитивных типов данных в объекты при необходимости их использования в контексте, где требуется объект. Если объект никогда не принимает значение null, Kotlin может использовать прямое представление примитивного типа данных без его обертки. Также существует явные функции преобразования между примитивными типами данных и их обертками.</LI>
     </UL>
 </details>
 
@@ -833,97 +745,98 @@ class Car : Movable{
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>Unit = void</b></LI>
+        <LI><b>Функциональный тип.</b> Функциональные типы объявляются с использованием синтаксиса <code>(параметры) -> возвращаемый_тип</code></LI>
     </UL>
 </details>
 
 
 ### **92. Расскажите об объекте Any в Kotlin.**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **93. Как создать Singleton объект в Kotlin?**
 <details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
+<summary><b>Answer</b></summary>
+<UL><LI><b>С использованием object:</b><br><br>
+<pre><code><span style="color:orange;">object</span> MySingleton {
+  <span style="color:orange;">init</span> {
+    println(<span style="color:green;">"Singleton initialized"</span>)
+  }
+  <span style="color:orange;">fun</span> doSomething() {
+    println(<span style="color:green;">"Singleton function called"</span>)
+  }
+}
+<span style="color:gray;">// Использование синглтона</span>
+MySingleton.doSomething()</pre></code></LI>
+<LI><b>С использованием companion object:</b><br><br>
+<pre><code><span style="color:orange;">class</span> MySingleton <span style="color:orange;">private constructor</span>() {
+  <span style="color:orange;">companion object</span> {
+      <span style="color:orange;">private val</span> <span style="color:MediumOrchid;">instance</span>: MySingleton <span style="color:orange;">by</span> lazy { MySingleton() }
+    <span style="color:orange;">fun</span> <span style="color:DodgerBlue;">getInstance</span>(): MySingleton {
+      <span style="color:orange;">return</span> <span style="color:MediumOrchid;">instance</span>
+    }
+  }
+  <span style="color:orange;">init</span> {
+    println(<span style="color:green;">"Singleton initialized"</span>)
+  }
+  <span style="color:orange;">fun</span> doSomething() {
+    println(<span style="color:green;">"Singleton function called"</span>)
+  }
+}
 
+<span style="color:gray;">// Использование синглтона</span>
+<span style="color:orange;">val</span> singleton = MySingleton.getInstance()
+singleton.doSomething()</pre></code></UL></details>
 
 ### **94. Что такое companion object?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>companion object = static</b></LI>
     </UL>
 </details>
-
 
 ### **95. Чем отличается const val от val?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>const val</b> инициализируется значением на этапе компиляции</LI>
+        <LI><b>val</b>  вычисляются во время выполнения программы</LI>
     </UL>
 </details>
-
 
 ### **96. Какие знаете модификаторы доступа?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>дефолтные + internal</b></LI>
     </UL>
 </details>
-
 
 ### **97. Что означает модификатор lateinit?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **98. Coroutines – что это за механизм? Использовали ли его на практике?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **99. Зачем нужны Coroutines? Чем они лучше обычных тредов?**
-<details>
-  <summary><b>Answer</b></summary>
-    <UL>
-        <LI><b></b></LI>
-    </UL>
-</details>
-
 
 ### **100. Что такое suspend-функция?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>suspend(рус. приостановить)</b></LI>
     </UL>
 </details>
 
 
 ### **101. Что такое Job?**
 <details>
-  <summary><b>Answer</b></summary>
+  <summary><b>Основные методы</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI>start() - запускает выполнение задачи.</LI>
+        <LI>cancel() - отменяет выполнение задачи.</LI>
+        <LI>join() - блокирует текущий поток до завершения выполнения задачи.</LI>
+        <LI>isActive - свойство, которое показывает, активна ли задача (не отменена и не завершена).</LI>
+        <LI>isCancelled - свойство, которое показывает, отменена ли задача.</LI>
+        <LI>isCompleted - свойство, которое показывает, завершена ли задача.</LI>
     </UL>
 </details>
 
@@ -932,16 +845,21 @@ class Car : Movable{
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>Dispatcher</b> - это компонент, управляющий тем, на каком потоке или пуле потоков выполняются корутины. Он определяет контекст выполнения для корутины, включая то, на каком потоке она будет запущена и продолжена после приостановки.</LI>
+        <OL>
+          <LI><b>Dispatchers.Default:</b> Предназначен для CPU-интенсивных операций. Использует пул потоков размером, соответствующим числу процессоров, доступных в системе. По умолчанию используется 1 или (число ядер CPU - 1) потоков.</LI>
+          <LI><b>Dispatchers.IO:</b> Предназначен для операций ввода-вывода (I/O), таких как чтение/запись файлов, сетевые запросы и т. д. Использует пул потоков с переменным размером, который автоматически масштабируется в зависимости от нагрузки.</LI>
+          <LI><b>Dispatchers.Main:</b> Для использования в Android. Он позволяет выполнять корутины на основном потоке пользовательского интерфейса (UI), что позволяет обновлять пользовательский интерфейс из фоновых задач.</LI>
+          <LI><b>Dispatchers.Unconfined:</b> Позволяет выполнить корутину без привязки к конкретному потоку. Корутина будет начата в текущем потоке, но после приостановки может быть возобновлена в любом потоке.</LI>
+        </OL>
     </UL>
 </details>
-
 
 ### **102. Что такое Scope?**
 <details>
   <summary><b>Answer</b></summary>
     <UL>
-        <LI><b></b></LI>
+        <LI><b>Scope (область)</b>- это контекст выполнения для корутин. Scope определяет, когда корутина должна быть активной и когда она должна завершиться.<br><br>Корутины могут быть запущены в рамках определенной области, которая может быть ограничена временем жизни, потоком выполнения или другими факторами. Scope управляет жизненным циклом корутины, позволяя ей быть активной в течение определенного периода времени.</LI>
     </UL>
 </details>
 
