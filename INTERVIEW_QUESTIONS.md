@@ -224,7 +224,20 @@
     <UL>
         <LI>В Kotlin все типы это классы. Any - топ класс, от которого наследуются другие классы, также есть подтип всех типов - Nothing(ничего).</LI>
         <LI>Все примитвные типы разделены на нулабельные и нет, дополнительно можно выделить платформ тайп, используется для обратной совместимости, когда не известено объект нулабельный или нет. </LI>
-        <LI>Функциональные типы Unit.</LI>
+        <LI>Функциональные типы.</LI>
+        <UL>
+        <LI><b>Функции высшего порядка (Higher-Order Functions)</b>: Это функции, которые принимают другие функции в качестве параметров или возвращают функции в качестве результатов. Например:<br>
+<pre><code><span style="color:orange;">fun</span> <span style="color:DodgerBlue;">operateOnNumbers</span>(
+  a: Int, b: Int,
+  operation: (Int, Int) -> Int
+): Int {
+  <span style="color:orange;">return</span> operation(a, b)
+}</pre></code>
+        </LI>
+        <LI><b>Типы функций (Function Types)</b>: Это типы данных, которые представляют собой сигнатуры функций. В Kotlin функциональные типы обычно записываются в следующем формате: (parameters) -> return_type. Например:<br>
+<pre><code><span style="color:orange;">val</span> <span style="color:DodgerBlue;">add</span>: (Int, Int) -> Int = { a, b -> a + b }</pre></code>
+        </LI>
+        </UL>
         <LI>Коллекции, которые дополнительно разделены на изменяемые и нет.</LI>
     </UL>
 </details>
