@@ -150,6 +150,16 @@
 #### [Содержание<---](#содержание)
 
 ### **0. Что такое [SOLID](https://javarush.com/groups/posts/3650-principih-solid-kotorihe-sdelajut-kod-chijshe)?**
+<details>
+  <summary><b>Answer</b></summary>
+    <UL>
+        <LI><b>S</b>ingle Responsibility Principle (Принцип единственной ответственности)</LI>
+        <LI><b>O</b>pen-Closed Principle (Принцип открытости-закрытости)</LI>
+        <LI><b>L</b>iskov Substitution Principle (Принцип подстановки Барбары Лисков)</LI>
+        <LI><b>I</b>nterface Segregation Principle (Принцип разделения интерфейса)</LI>
+        <LI><b>D</b>ependency Inversion Principle (Принцип инверсии зависимостей)</LI>
+    </UL>
+</details>
 
 ### **1. Назовите основные принципы ООП.**
 
